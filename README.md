@@ -17,4 +17,4 @@
 
 **Ссылка на сайт**
 
-* [Ссылка сайта на ГитХабе] (https://zooyanki.github.io/mesto/)
+* [Ссылка сайта на ГитХабе](https://zooyanki.github.io/mesto/)
