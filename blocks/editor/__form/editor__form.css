@@ -1,0 +1,7 @@
+.editor__form {
+    display: grid;
+    z-index: 10;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 33px 1fr;
+    padding-top: 150px;
+}

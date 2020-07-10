@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="pages/index.css">
+  <title>MESTO - Russia</title>
+</head>
+
+<body class="page">
+    <div class="content">
+      <header class="header block-width">
+        <img src="images/Vector.svg" class="header__logo" alt="Лого Место">
+      </header>
+      
+      <main>      
+        <section class="profile block-width">
+          <img src="images/image.jpg" class="profile__avatar" alt="Фото Жак-Ив Кусто">
+          <div class="profile__info">
+            <div class="profile__name-contain"></div>
+            <img src="images/Edit button.svg" class="profile__edit-button">
+            <div class="profile__status-contain"></div>
+          </div>
+          <button class="profile__add-button">
+              <img src="images/Add button.svg" class="profile__add-button-img" alt="Кнопка Редактировать">
+          </button>
+        </section>
+
+        <section class="elements block-width">
+          <div class="element">
+            <img src="images/arkhyz.jpg" class="element__image" alt="Плато Архыза">
+            <div class="element__name">
+              <p class="element__text">Архыз</p>
+              <img src="images/heart.svg" class="element__group" alt="Лайк">
+            </div>
+          </div>
+          <div class="element">
+            <img src="images/Elbrus.jpg" class="element__image" alt="Скалы Эльбруса">
+            <div class="element__name">
+              <p class="element__text">Эльбрус</p>
+              <img src="images/heart.svg" class="element__group" alt="Лайк">
+            </div>
+          </div>
+          <div class="element">
+            <img src="images/Buryatia.jpg" class="element__image" alt="Горы Бурятии">
+            <div class="element__name">
+              <p class="element__text">Бурятия</p>
+              <img src="images/heart.svg" class="element__group" alt="Лайк">
+            </div>
+          </div>
+          <div class="element">
+            <img src="images/Dombay.jpg" class="element__image" alt="Скалы Домбая">
+            <div class="element__name">
+              <p class="element__text">Домбай</p>
+              <img src="images/heart.svg" class="element__group" alt="Лайк">
+            </div>
+          </div>
+          <div class="element">
+            <img src="images/Karachaevo-cherkessia.jpg" class="element__image" alt="Храм">
+            <div class="element__name">
+              <p class="element__text">Карачаево-Черкессия</p>
+              <img src="images/heart.svg" class="element__group" alt="Лайк">
+            </div>
+          </div>
+          <div class="element">
+            <img src="images/st. petersburg - bridges.jpg" class="element__image" alt="Мосты Санкт-Петербурга">
+            <div class="element__name">
+              <p class="element__text">Санкт-Петербург</p>
+              <img src="images/heart.svg" class="element__group" alt="Лайк">
+            </div>
+          </div>
+        </section>        
+      </main>
+            
+      <footer class="footer block-width">
+        <h3 class="footer__text">© 2020 Mesto Russia</h3>
+      </footer>
+    </div>
+
+    <div class="editor">
+      <div class="editor__overlay"></div>      
+      <div class="editor__form">
+        <img src="images/Close Icon.svg" class="editor__button-close" alt="Кнопка закрыть">
+        <div class="editor__frame">
+          <h3 class="editor__heading">Редактировать профиль</h3>
+          <input class="editor__field-name change__name" value="Жак-Ив Кусто">
+          <input class="editor__field-status change__status" value="Исследователь океана">
+          <button class="editor__submit-button">Сохранить</button>
+        </div>        
+      </div>  
+    </div>    
+
+    <script src="script.js">
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+.editor__button-close {
+    background: none;
+    border: none;
+    z-index: 10;
+    grid-row: 1;
+    grid-column: 3;
+    justify-self: start;
+}
+
+
+.editor__button-close:hover {
+    opacity: 0.6;
+}

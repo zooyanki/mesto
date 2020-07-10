@@ -1,0 +1,14 @@
+.editor__submit-button {
+    color: white;
+    background-color: black;
+    width: 358px;
+    height: 50.15px;
+    margin: 48px 0 0 36px;
+    border-radius: 2px;
+    border: black solid 1px;
+    text-align: center;
+}
+
+.editor__submit-button:hover {
+    background-color:rgba(0, 0, 0, 0.8);
+}
