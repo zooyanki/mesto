@@ -15,58 +15,56 @@
       
       <main>      
         <section class="profile block-width">
-          <img src="images/image.jpg" class="profile__avatar" alt="Фото Жак-Ив Кусто">
+          <img src="images/image.jpg" class="profile__avatar" alt="Аватар_пользователя">
           <div class="profile__info">
-            <div class="profile__name-contain"></div>
-            <img src="images/Edit button.svg" class="profile__edit-button">
-            <div class="profile__status-contain"></div>
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button" type="submit"></button>
+            <h2 class="profile__status">Исследователь океана</h2>
           </div>
-          <button class="profile__add-button">
-              <img src="images/Add button.svg" class="profile__add-button-img" alt="Кнопка Редактировать">
-          </button>
+          <button class="profile__add-button" type="submit"></button>
         </section>
 
         <section class="elements block-width">
           <div class="element">
-            <img src="images/arkhyz.jpg" class="element__image" alt="Плато Архыза">
+            <img src="images/arkhyz.jpg" class="element__image" alt="Плато_Архыза">
             <div class="element__name">
               <p class="element__text">Архыз</p>
-              <img src="images/heart.svg" class="element__group" alt="Лайк">
+              <button class="element__group" type="submit"></button>
             </div>
           </div>
           <div class="element">
-            <img src="images/Elbrus.jpg" class="element__image" alt="Скалы Эльбруса">
+            <img src="images/Elbrus.jpg" class="element__image" alt="Скалы_Эльбруса">
             <div class="element__name">
               <p class="element__text">Эльбрус</p>
-              <img src="images/heart.svg" class="element__group" alt="Лайк">
+              <button class="element__group" type="submit"></button>
             </div>
           </div>
           <div class="element">
-            <img src="images/Buryatia.jpg" class="element__image" alt="Горы Бурятии">
+            <img src="images/Buryatia.jpg" class="element__image" alt="Горы_Бурятии">
             <div class="element__name">
               <p class="element__text">Бурятия</p>
-              <img src="images/heart.svg" class="element__group" alt="Лайк">
+              <button class="element__group" type="submit"></button>
             </div>
           </div>
           <div class="element">
-            <img src="images/Dombay.jpg" class="element__image" alt="Скалы Домбая">
+            <img src="images/Dombay.jpg" class="element__image" alt="Скалы_Домбая">
             <div class="element__name">
               <p class="element__text">Домбай</p>
-              <img src="images/heart.svg" class="element__group" alt="Лайк">
+              <button class="element__group" type="submit"></button>
             </div>
           </div>
           <div class="element">
             <img src="images/Karachaevo-cherkessia.jpg" class="element__image" alt="Храм">
             <div class="element__name">
               <p class="element__text">Карачаево-Черкессия</p>
-              <img src="images/heart.svg" class="element__group" alt="Лайк">
+              <button class="element__group" type="submit"></button>
             </div>
           </div>
           <div class="element">
-            <img src="images/st. petersburg - bridges.jpg" class="element__image" alt="Мосты Санкт-Петербурга">
+            <img src="images/st.petersburg.jpg" class="element__image" alt="Мосты_Санкт-Петербурга">
             <div class="element__name">
               <p class="element__text">Санкт-Петербург</p>
-              <img src="images/heart.svg" class="element__group" alt="Лайк">
+              <button class="element__group" type="submit"></button>
             </div>
           </div>
         </section>        
@@ -77,22 +75,21 @@
       </footer>
     </div>
 
-    <div class="editor">
-          
-      <div class="editor__form">
-        <img src="images/Close Icon.svg" class="editor__button-close" alt="Кнопка закрыть">
-        <div class="editor__frame">
+    <div class="editor">          
+      <form class="editor__form" name="EditorForm" action="#" method="#">
+        <button class="editor__button-close" type="button"></button>
+        <div class="editor__frame" >
           <h3 class="editor__heading">Редактировать профиль</h3>
-          <input class="editor__field-name change__name" value="Жак-Ив Кусто">
-          <input class="editor__field-status change__status" value="Исследователь океана">
-          <button class="editor__submit-button">Сохранить</button>
+          <input class="editor__field editor__field_name" value="Жак-Ив Кусто" name="EditorName" placeholder="Введите ваше имя" required>
+          <input class="editor__field editor__field_status" value="Исследователь океана" name="EditorStatus" placeholder="Введите вашу профессию" required>
+          <button class="editor__submit-button" type="submit">Сохранить</button>
         </div>        
-      </div>  
+      </form>  
     </div>    
 
     <div class="overlay"></div>
 
-    <script src="script.js">
+    <script src="script/script.js">
     </script>
 </body>
 </html>

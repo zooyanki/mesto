@@ -1,10 +1,13 @@
-.editor__field-name {
+@import url(_name/editor__field_name.css);
+@import url(_status/editor__field_status.css);
+
+.editor__field {
     border: none;
     width: 358px;
     height: 27px;
-    margin: 54px 0 0 36px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     font-weight: normal;
     font-size: 14px;
     line-height: 1.21;
+    cursor: pointer;
 }

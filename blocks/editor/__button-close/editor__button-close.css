@@ -1,13 +1,18 @@
 .editor__button-close {
-    background: none;
+    background-image: url(../../../images/Close_button.svg);
+    background-color: black;
     border: none;
+    width: 33px;
+    height: 33px;
     z-index: 10;
     grid-row: 1;
     grid-column: 3;
     justify-self: start;
+    cursor: pointer;
 }
 
 
 .editor__button-close:hover {
     opacity: 0.6;
+    transition: 0.5s;
 }

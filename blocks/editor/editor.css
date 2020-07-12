@@ -5,6 +5,8 @@
 @import url(__frame/editor__frame.css);
 @import url(__heading/editor__heading.css);
 @import url(__submit-button/editor__submit-button.css);
+@import url(__field/editor__field.css);
+@import url(_open/editor_open.css);
 
 .editor {
     z-index: 100;
