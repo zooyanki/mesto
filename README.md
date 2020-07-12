@@ -12,7 +12,7 @@
 
 **Картинки**
 
-Картинки позаимствованы с [сайта https://unsplash.com] (https://unsplash.com)
+Картинки позаимствованы с [сайта https://unsplash.com](https://unsplash.com)
 
 **Ссылка на сайт**
 
