@@ -7,25 +7,22 @@ let statusInput = document.querySelector('.editor__field_status');
 let profileStatus = document.querySelector('.profile__status');
 let nameInput = document.querySelector('.editor__field_name');
 let overlay = document.querySelector('.overlay');
+let formEditor = document.querySelector('.editor__form');
 
-// Открытие редактора профиля
-editButton.addEventListener('click', () => {
-    editor.style.display = "block";
+// Открытие редактора профиля0
+function editorOpenButton() {
+    editor.classList.add('editor_open');
     overlay.style.display = "block";
     nameInput.value = profileName.textContent;
     statusInput.value = profileStatus.textContent;
-})
+}
 
 
 // Закрытие редактора профиля
 function editorCloseButton() {
-    editor.style.display = "none";
+    editor.classList.remove('editor_open');
     overlay.style.display = "none";
 }
-closeButton.addEventListener('click', editorCloseButton);
-
-// Находим форму в DOM
-let formEditor = document.querySelector('.editor__form');
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -36,6 +33,8 @@ function formSubmitHandler (evt) {
     editorCloseButton();
 } 
     
-// Прикрепляем обработчик к форме:
+// обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
+editButton.addEventListener('click', editorOpenButton);
+closeButton.addEventListener('click', editorCloseButton);
 formEditor.addEventListener('submit', formSubmitHandler);
