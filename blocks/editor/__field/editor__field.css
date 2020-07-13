@@ -1,6 +1,3 @@
-@import url(_name/editor__field_name.css);
-@import url(_status/editor__field_status.css);
-
 .editor__field {
     border: none;
     width: 358px;
@@ -10,4 +7,15 @@
     font-size: 14px;
     line-height: 1.21;
     cursor: pointer;
+    margin: 54px 0 0 0;
+}
+
+.editor__field:last-child {
+    margin: 29px 0 0 0;
+}
+
+@media screen and (min-width: 300px) and (max-width: 768px) {
+    .editor__field {
+    width: 208px;
+    }
 }

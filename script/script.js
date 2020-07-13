@@ -12,7 +12,6 @@ let formEditor = document.querySelector('.editor__form');
 // Открытие редактора профиля0
 function editorOpenButton() {
     editor.classList.add('editor_open');
-    overlay.style.display = "block";
     nameInput.value = profileName.textContent;
     statusInput.value = profileStatus.textContent;
 }
@@ -21,7 +20,6 @@ function editorOpenButton() {
 // Закрытие редактора профиля
 function editorCloseButton() {
     editor.classList.remove('editor_open');
-    overlay.style.display = "none";
 }
 
 // Обработчик «отправки» формы, хотя пока

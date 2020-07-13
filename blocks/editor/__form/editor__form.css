@@ -1,7 +1,9 @@
 .editor__form {
+    position: relative;
+    left: 0;
+    bottom: 0;
     display: grid;
     z-index: 10;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 33px 1fr;
-    padding-top: 150px;
 }
