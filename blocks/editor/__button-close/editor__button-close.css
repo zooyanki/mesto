@@ -1,6 +1,6 @@
 .editor__button-close {
     background-image: url(../../../images/Close_button.svg);
-    background-color: black;
+    background-color: transparent;
     border: none;
     width: 33px;
     height: 33px;
