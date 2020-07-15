@@ -2,6 +2,7 @@
 @import url(../fonts/inter.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/block-width/block-width.css);
+@import url(../blocks/content/contens.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/elements/elements.css);
@@ -10,6 +11,3 @@
 @import url(../blocks/editor/editor.css);
 @import url(../blocks/editor/_open/editor_open.css);
 
-.content {
-    position: relative;
-}
