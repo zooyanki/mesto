@@ -8,5 +8,9 @@
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/element/element.css);
 @import url(../blocks/footer/footer.css);
-@import url(../blocks/editor/editor.css);
-@import url(../blocks/editor/_open/editor_open.css);
+@import url(../blocks/modal/modal.css);
+
+/*Модификаторы*/
+@import url(../blocks/element/__group/_black/element__group_black.css);
+@import url(../blocks/modal/_open/modal_open.css);
+@import url(../blocks/modal/__overlay/_render/modal__overlay_remder.css)

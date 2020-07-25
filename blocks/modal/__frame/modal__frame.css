@@ -1,4 +1,4 @@
-.editor__frame {    
+.modal__frame {    
     width: 430px;
     background-color: white;
     border-radius: 10px;
@@ -14,7 +14,7 @@
  }
 
  @media screen and (min-width: 300px) and (max-width: 768px) {
-    .editor__frame {
+    .modal__frame {
         width: 250px;
     }
  }

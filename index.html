@@ -28,6 +28,7 @@
           <template class="template">
             <div class="element">
               <img src="" class="element__image" alt="">
+              <button class="element__trash"></button>
               <div class="element__name">
                 <p class="element__text"></p>
                 <button class="element__group" type="button"></button>
@@ -41,19 +42,41 @@
         <h3 class="footer__text">© 2020 Mesto Russia</h3>
       </footer>
     </div>
+    
+    <div class="modal modal_newform">
+      <div class="modal__overlay"></div>          
+      <form class="modal__form modal__form_newform" name="modal-form" action="#">
+        <button class="modal__button-close" type="button"></button>
+        <div class="modal__frame" >
+          <h3 class="modal__heading">Новое место</h3>
+          <input class="modal__field modal__field_newform-name" value="" name="newform-name" placeholder="Название" required>
+          <input class="modal__field modal__field_newform-link" value="" name="newform-link" placeholder="Ссылка на картинку" required>
+          <button class="modal__submit-button" type="submit">Сохранить</button>
+        </div>        
+      </form>  
+    </div>
 
-    <div class="editor">
-      <div class="editor__overlay"></div>          
-      <form class="editor__form" name="editor-form" action="#">
-        <button class="editor__button-close" type="button"></button>
-        <div class="editor__frame" >
-          <h3 class="editor__heading">Редактировать профиль</h3>
-          <input class="editor__field editor__field_name" value="Жак-Ив Кусто" name="editor-name" placeholder="Введите ваше имя" required>
-          <input class="editor__field editor__field_status" value="Исследователь океана" name="editor-status" placeholder="Введите вашу профессию" required>
-          <button class="editor__submit-button" type="submit">Сохранить</button>
+    <div class="modal modal_editor">
+      <div class="modal__overlay"></div>          
+      <form class="modal__form modal__form_editor" name="modal-form" action="#">
+        <button class="modal__button-close" type="button"></button>
+        <div class="modal__frame" >
+          <h3 class="modal__heading">Редактировать профиль</h3>
+          <input class="modal__field modal__editor-field_name" value="Жак-Ив Кусто" name="editor-name" placeholder="Введите ваше имя" required>
+          <input class="modal__field modal__editor-field_status" value="Исследователь океана" name="editor-status" placeholder="Введите вашу профессию" required>
+          <button class="modal__submit-button modal__submit-button_editor" type="submit">Сохранить</button>
         </div>        
       </form>  
     </div>  
+   
+    <div class="modal modal_render">
+      <div class="modal__overlay modal__overlay_render"></div>          
+      <div class="modal__form modal__form_render" name="modal-form" action="#">
+        <button class="modal__button-close" type="button"></button>
+        <img src="" class="modal__render"> 
+        <h2 class="modal__render-text"></h2>      
+      </div>        
+    </div>
 
     <script src="script/script.js">
     </script>

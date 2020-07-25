@@ -2,6 +2,7 @@
 @import url(__image/element__image.css);
 @import url(__name/element__name.css);
 @import url(__text/element__text.css);
+@import url(__trash/element__trash.css);
 
 
 
@@ -9,4 +10,5 @@
     border-radius: 10px;
     background-color: white;
     overflow: hidden;
+    position: relative;
 }

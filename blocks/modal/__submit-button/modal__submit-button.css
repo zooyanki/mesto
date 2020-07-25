@@ -1,4 +1,4 @@
-.editor__submit-button {
+.modal__submit-button {
     color: white;
     background-color: black;
     width: 358px;
@@ -10,12 +10,12 @@
     cursor: pointer
 }
 
-.editor__submit-button:hover {
+.modal__submit-button:hover {
     background-color:rgba(0, 0, 0, 0.8);
 }
 
 @media screen and (min-width: 300px) and (max-width: 768px) {
-    .editor__submit-button {
+    .modal__submit-button {
     width: 208px;
     }
 }

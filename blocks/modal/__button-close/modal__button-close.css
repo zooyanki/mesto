@@ -1,4 +1,4 @@
-.editor__button-close {
+.modal__button-close {
     background-image: url(../../../images/closebutton.svg);
     background-color: transparent;
     border: none;
@@ -12,7 +12,7 @@
 }
 
 
-.editor__button-close:hover {
+.modal__button-close:hover {
     opacity: 0.6;
     transition: 0.5s;
 }

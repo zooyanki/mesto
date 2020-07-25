@@ -1,4 +1,4 @@
-.editor__field {
+.modal__field {
     border: none;
     width: 358px;
     height: 27px;
@@ -10,12 +10,12 @@
     margin: 54px 0 0 0;
 }
 
-.editor__field:last-child {
+.modal__field:last-child {
     margin: 29px 0 0 0;
 }
 
 @media screen and (min-width: 300px) and (max-width: 768px) {
-    .editor__field {
+    .modal__field {
     width: 208px;
     }
 }
