@@ -55,12 +55,6 @@ function formSubmitHandler (evt) {
     profileStatus.textContent = statusInput.value;
     modalCloseButton();
 }
-   
-// обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-editButton.addEventListener('click', editorOpenButton);
-addButton.addEventListener('click', newFormOpenButton);
-formEditor.addEventListener('submit', formSubmitHandler);
 
 //Автоматическое добавление карточек на главную страницу
 const initialCards = [
@@ -123,8 +117,6 @@ function basicRender() {
 document.addEventListener('DOMContentLoaded', basicRender);
 
 
-
-
 // Обработчик - добавление картинок
 function addRender (ren) {
     ren.preventDefault();
@@ -137,8 +129,10 @@ function addRender (ren) {
     modalCloseButton();
 }
 
-document.addEventListener('submit', addRender);
+editButton.addEventListener('click', editorOpenButton);
+addButton.addEventListener('click', newFormOpenButton);
+formEditor.addEventListener('submit', formSubmitHandler);
+newForm.addEventListener('submit', addRender);
 
-// Удаление картинок
 
     
