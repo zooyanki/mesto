@@ -9,8 +9,8 @@
     grid-column: 3;
     justify-self: start;
     cursor: pointer;
+    outline-width: 0;
 }
-
 
 .modal__button-close:hover {
     opacity: 0.6;

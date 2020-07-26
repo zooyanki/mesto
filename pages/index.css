@@ -13,4 +13,4 @@
 /*Модификаторы*/
 @import url(../blocks/element/__group/_black/element__group_black.css);
 @import url(../blocks/modal/_open/modal_open.css);
-@import url(../blocks/modal/__overlay/_render/modal__overlay_remder.css)
+@import url(../blocks/modal/__overlay/_render/modal__overlay_render.css);
