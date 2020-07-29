@@ -3,6 +3,7 @@
 @import url(__name/element__name.css);
 @import url(__text/element__text.css);
 @import url(__trash/element__trash.css);
+@import url(__image-block/element__image-block.css);
 
 
 
@@ -11,4 +12,5 @@
     background-color: white;
     overflow: hidden;
     position: relative;
+    width: 282px;
 }
