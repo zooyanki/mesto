@@ -93,23 +93,21 @@ const initialCards = [
     }
 ];
 
-let cards = initialCards;
-
 function basicRender() { 
     elements.innerHTML = '';       
 
-    cards.forEach((item, i) => {
+    initialCards.forEach((item, i) => {
         const card = createCard(item.name, item.link, i);
         elements.append(card);
     })
 }
 basicRender();
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function createCard(name, link, index) {
+function createCard(name, link) {
     const card = template.cloneNode(true);
     const elementImage = card.querySelector('.element__image');
     elementImage.src = link;
-    card.querySelector('.element__text').textContent = name;
+    const elementText = card.querySelector('.element__text');
+    elementText.textContent = name;
     
     //Лайк - "да" или "нет"
     card.querySelector('.element__group').addEventListener('click', function (evt){ 
@@ -119,10 +117,12 @@ function createCard(name, link, index) {
     // Удаление картинок
     const trash = card.querySelector('.element__trash');
 
-    trash.addEventListener('click', function() {
-        cards = cards.filter((e, ind) => index != ind);
-        basicRender();
+    trash.addEventListener('click', () => {
+        const deleteElement = trash.closest('.element');
+        deleteElement.remove();
     });
+
+    //Добавление карточек
 
     //Открытие окна увеличенной картинки
     elementImage.addEventListener('click', function(){ 
@@ -134,26 +134,17 @@ function createCard(name, link, index) {
     return card;
 }
 
-
-
-
-
 // Обработчик - добавление картинок
-function addRender (ren) {
+newForm.addEventListener('submit', (ren)=> {
     ren.preventDefault();
-    const newCard = {
-        name: inputNewformName.value,
-        link: inputNewformLink.value
-    }
-    cards.unshift(newCard);
-    basicRender();
-    modalClose(newForm);
-}
+    const newCard = createCard(inputNewformName.value, inputNewformLink.value);
+    elements.prepend(newCard);
+modalClose(newForm);
+})
 
 editButton.addEventListener('click', editorOpenButton);
 addButton.addEventListener('click', newFormOpenButton);
 formEditor.addEventListener('submit', formProfileSubmitHandler);
-newForm.addEventListener('submit', addRender);
 
 
     
