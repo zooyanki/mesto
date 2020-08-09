@@ -1,15 +1,17 @@
 const formError = formNewform.querySelector('.modal__input-error');
 
-const showError = (formElement, inputElement) => {
+const showError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add('modal__field_error');
     errorElement.classList.add('modal__input-error_active');
+    errorElement.textContent = errorMessage;
 }
 
 const hideError = (formElement, inputElement) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove('modal__field_error');
     errorElement.classList.remove('modal__input-error_active');
+    errorElement.textContent = '';
 }
 
 const checkInputValidity = (formElement, inputElement) => {
