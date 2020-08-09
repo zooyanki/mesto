@@ -14,4 +14,6 @@
 @import url(../blocks/element/__group/_black/element__group_black.css);
 @import url(../blocks/modal/_opened/modal_opened.css);
 @import url(../blocks/modal/__overlay/_render/modal__overlay_render.css);
-
+@import url(../blocks/modal/__field/_error/modal__field_error.css);
+@import url(../blocks/modal/__input-error/_active/modal__input-error_active.css);
+@import url(../blocks/modal/__submit-button/_invalid/modal__submit-button_invalid.css);

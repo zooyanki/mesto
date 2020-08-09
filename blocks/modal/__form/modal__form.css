@@ -2,6 +2,6 @@
     position: relative;
     display: grid;
     z-index: 10;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: auto 1fr auto;
     grid-template-rows: 33px 1fr;
 }
