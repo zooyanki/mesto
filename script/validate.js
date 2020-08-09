@@ -1,5 +1,3 @@
-const formError = formNewform.querySelector('.modal__input-error');
-
 const showError = (formElement, inputElement, errorMessage) => {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add('modal__field_error');
@@ -26,6 +24,7 @@ inputNewformName.addEventListener('input', function () {
     checkInputValidity();
 });
 
+//Выбор "инпута" для присвоения ошибок
 const setEventListeners = (formElement) => {
     const inputList = Array.from(formElement.querySelectorAll('.modal__field'));
     const buttonElement = formElement.querySelector('.modal__submit-button');
@@ -38,6 +37,7 @@ const setEventListeners = (formElement) => {
     });
 };
 
+//Выбор "формы"
 const enableValidation = () => {
     const formList = Array.from(document.querySelectorAll('.modal__form'));
 
@@ -51,6 +51,7 @@ const enableValidation = () => {
 
 enableValidation();
 
+//Функция отключения кнопки "сохранить"
 const hasInvalidInput = (inputList) => {
     return inputList.some((inputElement) => {
         return !inputElement.validity.valid;
