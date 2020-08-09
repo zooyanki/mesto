@@ -7,11 +7,11 @@
     font-size: 14px;
     line-height: 1.21;
     cursor: pointer;
-    margin: 54px 0 0 0;
+    margin: 0;
 }
 
 .modal__field:last-child {
-    margin: 29px 0 0 0;
+    margin: 0;
 }
 
 @media screen and (min-width: 300px) and (max-width: 768px) {

@@ -51,10 +51,14 @@
         <button class="modal__button-close" type="button"></button>
         <div class="modal__frame" >
           <h3 class="modal__heading">Новое место</h3>
-          <input class="modal__field modal__field_newform-name" id="input-newform-name" value="" name="newform-name" type="text" placeholder="Название" minlength="1" maxlength="30" required>
-          <span class="modal__input-error" id="input-newform-name-error">Вы пропустили это поле</span>
-          <input class="modal__field modal__field_newform-link" id="input-newform-url" value="" name="newform-link" placeholder="Ссылка на картинку" type="url" required>
-          <span class="modal__input-error" id="input-newform-url-error">Вы пропустили это поле</span>
+          <label class="modal__label">
+            <input class="modal__field modal__field_newform-name" id="input-newform-name" value="" name="newform-name" type="text" placeholder="Название" minlength="1" maxlength="30" required>
+            <span class="modal__input-error" id="input-newform-name-error"></span>
+          </label>
+          <label class="modal__label">
+            <input class="modal__field modal__field_newform-link" id="input-newform-url" value="" name="newform-link" placeholder="Ссылка на картинку" type="url" required>
+            <span class="modal__input-error" id="input-newform-url-error"></span>
+          </label>
           <button class="modal__submit-button" type="submit">Сохранить</button>
         </div>        
       </form>  
@@ -66,10 +70,14 @@
         <button class="modal__button-close" type="button"></button>
         <div class="modal__frame" >
           <h3 class="modal__heading">Редактировать профиль</h3>
-          <input class="modal__field modal__editor-field_name" id="input-editor-name" value="Жак-Ив Кусто" name="editor-name" type="text" placeholder="Введите ваше имя" minlength="2" maxlength="40" required>
-          <span class="modal__input-error" id="input-editor-name-error">Вы пропустили это поле</span>
-          <input class="modal__field modal__editor-field_status" id="input-editor-status" value="Исследователь океана" name="editor-status" type="text" placeholder="Введите вашу профессию" minlength="2" maxlength="200" required>
-          <span class="modal__input-error" id="input-editor-status-error">Вы пропустили это поле</span>
+          <label class="modal__label">
+            <input class="modal__field modal__editor-field_name" id="input-editor-name" value="Жак-Ив Кусто" name="editor-name" type="text" placeholder="Введите ваше имя" minlength="2" maxlength="40" required>
+            <span class="modal__input-error" id="input-editor-name-error"></span>
+          </label>
+          <label class="modal__label">
+            <input class="modal__field modal__editor-field_status" id="input-editor-status" value="Исследователь океана" name="editor-status" type="text" placeholder="Введите вашу профессию" minlength="2" maxlength="200" required>
+            <span class="modal__input-error" id="input-editor-status-error"></span>
+          </label>
           <button class="modal__submit-button" type="submit">Сохранить</button>
         </div>        
       </form>  

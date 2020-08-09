@@ -8,6 +8,7 @@
 @import url(__render-text/modal__render-text.css);
 @import url(__render/modal__render.css);
 @import url(__input-error/modal__input-error.css);
+@import url(__label/modal__label.css);
 
 .modal {
     z-index: 100;
