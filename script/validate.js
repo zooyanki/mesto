@@ -20,6 +20,10 @@ const checkInputValidity = (formElement, inputElement) => {
       }
     }
 
+inputNewformName.addEventListener('input', function () {
+    checkInputValidity();
+});
+
 //Выбор "инпута" для присвоения ошибок
 const setEventListeners = (formElement) => {
     const inputList = Array.from(formElement.querySelectorAll('.modal__field'));

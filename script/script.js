@@ -41,6 +41,10 @@ function newFormOpenButton() {
     inputNewformName.value = '';
     inputNewformLink.value = '';
     modalOpen(newForm);
+
+    const inputList = Array.from(formNewform.querySelectorAll('.modal__field'));
+    const buttonElement = formNewform.querySelector('.modal__submit-button');
+    toggleButtonState(inputList, buttonElement);
 }
 
 // Закрытие модальных окон: кнопка "крестик"
@@ -55,22 +59,11 @@ closeBtnNewForm.addEventListener('click', () => modalClose(newForm));
 closeBtnEditor.addEventListener('click', () => modalClose(editor));
 closeBtnRender.addEventListener('click', () => modalClose(render));
 
-// Закрытие модальных окон: кнопка клавиатуры "ESC"
+// Закрытие модальных окон: кнопка клавиатуры "ESC" 
 document.addEventListener('keydown', function (esc) {
     if (esc.keyCode === 27) {
-        modalClose(editor);    
-    }
-});
-
-document.addEventListener('keydown', function (esc) {
-    if (esc.keyCode === 27) {
-        modalClose(newForm);    
-    }
-});
-
-document.addEventListener('keydown', function (esc) {
-    if (esc.keyCode === 27) {
-        modalClose(render);    
+        const openedPopup = document.querySelector('.modal_opened');
+        modalClose(openedPopup);    
     }
 });
 
