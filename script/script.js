@@ -44,7 +44,7 @@ function newFormOpenButton() {
 
     const inputList = Array.from(formNewform.querySelectorAll('.modal__field'));
     const buttonElement = formNewform.querySelector('.modal__submit-button');
-    toggleButtonState(inputList, buttonElement);
+    toggleButtonState(inputList, buttonElement, objectValid);
 }
 
 // Закрытие модальных окон: кнопка "крестик"
