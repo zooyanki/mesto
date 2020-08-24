@@ -119,6 +119,7 @@ function basicRender() {
     })
 }
 basicRender();
+
 function createCard(name, link) {
     const card = template.cloneNode(true);
     const elementImage = card.querySelector('.element__image');
@@ -127,7 +128,7 @@ function createCard(name, link) {
     elementText.textContent = name;
     
     //Лайк - "да" или "нет"
-    card.querySelector('.element__group').addEventListener('click', function (evt){ 
+    card.querySelector('.element__group').addEventListener('click', (evt) => { 
         evt.target.classList.toggle('element__group_black');
     });   
     
@@ -139,10 +140,8 @@ function createCard(name, link) {
         deleteElement.remove();
     });
 
-    //Добавление карточек
-
     //Открытие окна увеличенной картинки
-    elementImage.addEventListener('click', function(){ 
+    elementImage.addEventListener('click', () => { 
         modalOpen(render);   
         renderImage.src = link;
         renderText.textContent = name;
@@ -152,7 +151,7 @@ function createCard(name, link) {
 }
 
 // Обработчик - добавление картинок
-newForm.addEventListener('submit', (ren)=> {
+newForm.addEventListener('submit', (ren) => {
     ren.preventDefault();
     const newCard = createCard(inputNewformName.value, inputNewformLink.value);
     elements.prepend(newCard);
