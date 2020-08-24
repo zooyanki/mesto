@@ -2,14 +2,11 @@ const editButton = document.querySelector('.profile__edit-button');
 const profileName = document.querySelector('.profile__name');
 const profileStatus = document.querySelector('.profile__status');
 const addButton = document.querySelector('.profile__add-button');
-//Переменные "Модального окна - общие"
-const closeButtons = document.querySelectorAll('.modal__button-close'); //Кнопка закрытия окна
 
 //Переменные "Модального окна - Профиль"
 const editor = document.querySelector('.modal_editor');
-const submitButton = document.querySelector('.modal__submit-button');
-const statusInput = document.querySelector('.modal__editor-field_status');
-const nameInput = document.querySelector('.modal__editor-field_name');
+const statusInput = document.querySelector('.modal__field_editor-status');
+const nameInput = document.querySelector('.modal__field_editor-name');
 const formEditor = document.querySelector('.modal__form_editor');
 //Переменные "Модального окна - добавление рендера"
 const formNewform = document.querySelector('.modal__form_newform');
@@ -60,8 +57,9 @@ closeBtnEditor.addEventListener('click', () => modalClose(editor));
 closeBtnRender.addEventListener('click', () => modalClose(render));
 
 // Закрытие модальных окон: кнопка клавиатуры "ESC" 
-document.addEventListener('keydown', function (esc) {
-    if (esc.keyCode === 27) {
+document.addEventListener('keydown', (esc) => {
+    const keyEsc = 27;
+    if (esc.keyCode === keyEsc) {
         const openedPopup = document.querySelector('.modal_opened');
         modalClose(openedPopup);    
     }
