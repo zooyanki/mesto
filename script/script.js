@@ -124,6 +124,7 @@ function createCard(name, link) {
     const card = template.cloneNode(true);
     const elementImage = card.querySelector('.element__image');
     elementImage.src = link;
+    elementImage.alt = name;
     const elementText = card.querySelector('.element__text');
     elementText.textContent = name;
     
@@ -144,6 +145,7 @@ function createCard(name, link) {
     elementImage.addEventListener('click', () => { 
         modalOpen(render);   
         renderImage.src = link;
+        renderImage.alt = name;
         renderText.textContent = name;
     });
 
