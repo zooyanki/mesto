@@ -15,14 +15,14 @@ const inputNewformName = formNewform.querySelector('.modal__field_newform-name')
 const inputNewformLink = formNewform.querySelector('.modal__field_newform-link');
 const template = document.querySelector('.template').content;
 //Переменные "Модального окна - увеличенный рендер"
-const render = document.querySelector('.modal_render');
-const renderImage = document.querySelector('.modal__render');
-const renderText = document.querySelector('.modal__render-text');
+export const render = document.querySelector('.modal_render');
+export const renderImage = document.querySelector('.modal__render');
+export const renderText = document.querySelector('.modal__render-text');
 //Переменные "Карточки с рендером"
 const elements = document.querySelector('.elements');
 
 //Функция открытия окна
-function modalOpen(popup){
+export function modalOpen(popup){
     popup.classList.add('modal_opened');
 }
 
@@ -56,12 +56,12 @@ closeBtnNewForm.addEventListener('click', () => modalClose(newForm));
 closeBtnEditor.addEventListener('click', () => modalClose(editor));
 closeBtnRender.addEventListener('click', () => modalClose(render));
 
-// Закрытие модальных окон: кнопка клавиатуры "ESC" 
+// Закрытие модальных окон: кнопка клавиатуры "ESC"
 document.addEventListener('keydown', (esc) => {
     const keyEsc = 27;
     if (esc.keyCode === keyEsc) {
         const openedPopup = document.querySelector('.modal_opened');
-        modalClose(openedPopup);    
+        modalClose(openedPopup);
     }
 });
 
@@ -82,7 +82,7 @@ function formProfileSubmitHandler (evt) {
     modalClose(editor);
 }
 
-//Автоматическое добавление карточек на главную страницу
+//Начальный массив карточек
 const initialCards = [
     {
         name: 'Архыз',
@@ -110,60 +110,26 @@ const initialCards = [
     }
 ];
 
-function basicRender() { 
-    elements.innerHTML = '';       
+initialCards.forEach((item) => {
+    const card = new Card(item.name, item.link);
+    const cardElement = card.generateCard();
 
-    initialCards.forEach((item, i) => {
-        const card = createCard(item.name, item.link, i);
-        elements.append(card);
-    })
-}
-basicRender();
+    document.querySelector('.elements').append(cardElement);
 
-function createCard(name, link) {
-    const card = template.cloneNode(true);
-    const elementImage = card.querySelector('.element__image');
-    elementImage.src = link;
-    elementImage.alt = name;
-    const elementText = card.querySelector('.element__text');
-    elementText.textContent = name;
-    
-    //Лайк - "да" или "нет"
-    card.querySelector('.element__group').addEventListener('click', (evt) => { 
-        evt.target.classList.toggle('element__group_black');
-    });   
-    
-    // Удаление картинок
-    const trash = card.querySelector('.element__trash');
+});
 
-    trash.addEventListener('click', () => {
-        const deleteElement = trash.closest('.element');
-        deleteElement.remove();
-    });
-
-    //Открытие окна увеличенной картинки
-    elementImage.addEventListener('click', () => { 
-        modalOpen(render);   
-        renderImage.src = link;
-        renderImage.alt = name;
-        renderText.textContent = name;
-    });
-
-    return card;
-}
-
-// Обработчик - добавление картинок
+//Обработчик - добавление картинок
 newForm.addEventListener('submit', (ren) => {
     ren.preventDefault();
-    const newCard = createCard(inputNewformName.value, inputNewformLink.value);
-    elements.prepend(newCard);
-modalClose(newForm);
-})
+    const newCard = new Card(inputNewformName.value, inputNewformLink.value);
+    elements.prepend(newCard.generateCard());
+    modalClose(newForm);
+});
 
 editButton.addEventListener('click', editorOpenButton);
 addButton.addEventListener('click', newFormOpenButton);
 formEditor.addEventListener('submit', formProfileSubmitHandler);
 
+import Card from '../script/card.js';
 
-    
 
