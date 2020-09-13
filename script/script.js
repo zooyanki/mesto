@@ -1,3 +1,7 @@
+import Card from '../script/card.js';
+import FormValidator from '../script/validate.js'
+
+
 const editButton = document.querySelector('.profile__edit-button');
 const profileName = document.querySelector('.profile__name');
 const profileStatus = document.querySelector('.profile__status');
@@ -41,7 +45,7 @@ function newFormOpenButton() {
 
     const inputList = Array.from(formNewform.querySelectorAll('.modal__field'));
     const buttonElement = formNewform.querySelector('.modal__submit-button');
-    toggleButtonState(inputList, buttonElement, objectValid);
+    // toggleButtonState(inputList, buttonElement, objectValid);
 }
 
 // Закрытие модальных окон: кнопка "крестик"
@@ -130,6 +134,25 @@ editButton.addEventListener('click', editorOpenButton);
 addButton.addEventListener('click', newFormOpenButton);
 formEditor.addEventListener('submit', formProfileSubmitHandler);
 
-import Card from '../script/card.js';
+const objectValid = {
+    formSelector: ".modal__form",
+    inputSelector: ".modal__field",
+    submitButtonSelector: ".modal__submit-button",
+    inactiveButton: "modal__submit-button_invalid",
+    inputError: "modal__field_error",
+    inputErrorActive: "modal__input-error_active"
+}
+
+const formList = Array.from(document.querySelectorAll(objectValid.formSelector));
+
+formList.forEach((formElement) => {
+    const validator = new FormValidator(objectValid, formElement);
+    validator.enableValidation();
+});
+
+
+
+
+
 
 
