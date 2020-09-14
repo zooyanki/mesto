@@ -43,7 +43,7 @@ export default class Card {
             });
         //Удаление карточки
         this._element.querySelector('.element__trash').addEventListener('click', () => {
-            this._element.querySelector('.element__trash').closest('.element').remove();
+            this._element.remove();
             });
         }
 
