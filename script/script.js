@@ -1,5 +1,5 @@
 import Card from '../script/card.js';
-import FormValidator from '../script/validate.js'
+import FormValidator from '../script/validate.js';
 
 
 const editButton = document.querySelector('.profile__edit-button');
@@ -134,8 +134,9 @@ editButton.addEventListener('click', editorOpenButton);
 addButton.addEventListener('click', newFormOpenButton);
 formEditor.addEventListener('submit', formProfileSubmitHandler);
 
+//Валидация форм - селекторы и классы.
 const objectValid = {
-    formSelector: ".modal__form",
+    formSelector: ".modal__form_validator",
     inputSelector: ".modal__field",
     submitButtonSelector: ".modal__submit-button",
     inactiveButton: "modal__submit-button_invalid",
