@@ -1,7 +1,7 @@
 import Card from '../script/card.js';
 import FormValidator from '../script/validate.js';
 
-
+//------------------------------------------------Переменные-----------------------------------------------------------//
 const editButton = document.querySelector('.profile__edit-button');
 const profileName = document.querySelector('.profile__name');
 const profileStatus = document.querySelector('.profile__status');
@@ -24,69 +24,16 @@ export const renderImage = document.querySelector('.modal__render');
 export const renderText = document.querySelector('.modal__render-text');
 //Переменные "Карточки с рендером"
 const elements = document.querySelector('.elements');
-
-//Функция открытия окна
-export function modalOpen(popup){
-    popup.classList.add('modal_opened');
-}
-
-// Открытие редактора профиля
-function editorOpenButton() {
-    modalOpen(editor);
-    nameInput.value = profileName.textContent;
-    statusInput.value = profileStatus.textContent;
-}
-
-//Открытие окна добавления рендера
-function newFormOpenButton() {
-    inputNewformName.value = '';
-    inputNewformLink.value = '';
-    modalOpen(newForm);
-
-    const inputList = Array.from(formNewform.querySelectorAll('.modal__field'));
-    const buttonElement = formNewform.querySelector('.modal__submit-button');
-    // toggleButtonState(inputList, buttonElement, objectValid);
-}
-
-// Закрытие модальных окон: кнопка "крестик"
-function modalClose(popup){
-    popup.classList.remove('modal_opened');
-}
+//Переменные "Кнопки "X" закрытия"
 const closeBtnNewForm = newForm.querySelector(".modal__button-close");
 const closeBtnEditor = editor.querySelector(".modal__button-close");
 const closeBtnRender = render.querySelector(".modal__button-close");
-
-closeBtnNewForm.addEventListener('click', () => modalClose(newForm));
-closeBtnEditor.addEventListener('click', () => modalClose(editor));
-closeBtnRender.addEventListener('click', () => modalClose(render));
-
-// Закрытие модальных окон: кнопка клавиатуры "ESC"
-document.addEventListener('keydown', (esc) => {
-    const keyEsc = 27;
-    if (esc.keyCode === keyEsc) {
-        const openedPopup = document.querySelector('.modal_opened');
-        modalClose(openedPopup);
-    }
-});
-
-//Закрытие модальных окон: нажатие на "Overlay"
+//Переменные закрытия модального окна нажатием на оверлэй
 const closeOverlayNewForm = newForm.querySelector(".modal__overlay");
 const closeOverlayEditor = editor.querySelector(".modal__overlay");
 const closeOverlayRender = render.querySelector(".modal__overlay");
 
-closeOverlayNewForm.addEventListener('click', () => modalClose(newForm));
-closeOverlayEditor.addEventListener('click', () => modalClose(editor));
-closeOverlayRender.addEventListener('click', () => modalClose(render));
-
-// Обработчик «отправки» формы
-function formProfileSubmitHandler (evt) {
-    evt.preventDefault();
-    profileName.textContent = nameInput.value;
-    profileStatus.textContent = statusInput.value;
-    modalClose(editor);
-}
-
-//Начальный массив карточек
+//Переменная - Начальный массив карточек
 const initialCards = [
     {
         name: 'Архыз',
@@ -114,6 +61,70 @@ const initialCards = [
     }
 ];
 
+
+//-------------------------------------------------Функции-------------------------------------------------//
+
+
+//Функция - открытия окна
+export function modalOpen(popup){
+    popup.classList.add('modal_opened');
+}
+
+//Функция - редактора профиля
+function editorOpenButton() {
+    modalOpen(editor);
+    nameInput.value = profileName.textContent;
+    statusInput.value = profileStatus.textContent;
+}
+
+//Функция - Открытие окна добавления рендера
+function newFormOpenButton() {
+    inputNewformName.value = '';
+    inputNewformLink.value = '';
+    modalOpen(newForm);
+}
+
+//Функция - Закрытие модальных окон: кнопка "крестик"
+function modalClose(popup){
+    popup.classList.remove('modal_opened');
+}
+
+// Обработчик «отправки» формы
+function formProfileSubmitHandler (evt) {
+    evt.preventDefault();
+    profileName.textContent = nameInput.value;
+    profileStatus.textContent = statusInput.value;
+    modalClose(editor);
+}
+
+//---------------------------------------------------Обработчик событий------------------------------------------//
+// Закрытие модального окна кнопкой "Х"
+closeBtnNewForm.addEventListener('click', () => modalClose(newForm));
+closeBtnEditor.addEventListener('click', () => modalClose(editor));
+closeBtnRender.addEventListener('click', () => modalClose(render));
+
+// Закрытие модальных окон: кнопка клавиатуры "ESC"
+document.addEventListener('keydown', (esc) => {
+    const keyEsc = 27;
+    if (esc.keyCode === keyEsc) {
+        const openedPopup = document.querySelector('.modal_opened');
+        modalClose(openedPopup);
+    }
+});
+
+//Закрытие модальных окон: нажатие на "Overlay"
+closeOverlayNewForm.addEventListener('click', () => modalClose(newForm));
+closeOverlayEditor.addEventListener('click', () => modalClose(editor));
+closeOverlayRender.addEventListener('click', () => modalClose(render));
+
+//Обработчик создания новой карточки
+newForm.addEventListener('submit', (ren) => {
+    ren.preventDefault();
+    const newCard = new Card(inputNewformName.value, inputNewformLink.value);
+    elements.prepend(newCard.generateCard());
+    modalClose(newForm);
+});
+
 initialCards.forEach((item) => {
     const card = new Card(item.name, item.link);
     const cardElement = card.generateCard();
@@ -123,16 +134,12 @@ initialCards.forEach((item) => {
 });
 
 //Обработчик - добавление картинок
-newForm.addEventListener('submit', (ren) => {
-    ren.preventDefault();
-    const newCard = new Card(inputNewformName.value, inputNewformLink.value);
-    elements.prepend(newCard.generateCard());
-    modalClose(newForm);
-});
-
 editButton.addEventListener('click', editorOpenButton);
 addButton.addEventListener('click', newFormOpenButton);
 formEditor.addEventListener('submit', formProfileSubmitHandler);
+
+
+//-------------------------------------------------------------Валидация-мать порядка---------------------------------------//
 
 //Валидация форм - селекторы и классы.
 const objectValid = {

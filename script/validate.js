@@ -44,10 +44,6 @@ export default class FormValidator {
                 this._toggleButtonState(inputList, buttonElement);
             });
         });
-       
-        this._formElement.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-        });
     }
 
     _hasInvalidInput(inputList) {
@@ -59,6 +55,10 @@ export default class FormValidator {
     enableValidation () {
         const inputList = Array.from(this._formElement.querySelectorAll(this._objectValid.inputSelector));
         const buttonElement = this._formElement.querySelector(this._objectValid.submitButtonSelector);
+
+        this._formElement.addEventListener('submit', (evt) => {
+            evt.preventDefault();
+        });
 
         this._setEventListeners(inputList, buttonElement);
         this._toggleButtonState(inputList, buttonElement);

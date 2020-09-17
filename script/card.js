@@ -3,9 +3,10 @@ import {render, renderImage, renderText, modalOpen} from '../script/script.js';
 
 /////////------------------Карточки---------------------------////////////////
 export default class Card {
-    constructor(name, link) {
+    constructor(name, link, template) {
         this._name = name;
         this._link = link;
+        this._template = template;
     }
 
     _getTemplate() {
@@ -15,11 +16,15 @@ export default class Card {
     }
 
 //Создание карточек
-    generateCard() {
+    generateCard() {      
         this._element = this._getTemplate();
-        this._element.querySelector('.element__image').src = this._link;
-        this._element.querySelector('.element__image').alt = this._name;
-        this._element.querySelector('.element__text').textContent = this._name;
+
+        const elementImage = this._element.querySelector('.element__image');
+        const elementText = this._element.querySelector('.element__text');
+
+        elementImage.src = this._link;
+        elementImage.alt = this._name;
+        elementText.textContent = this._name;
 
         this._setEventListeners();
         return this._element;
