@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="pages/index.css">
+  <!-- <link rel="stylesheet" href="pages/index.css"> -->
   <title>MESTO - Russia</title>
 </head>
 
@@ -24,21 +24,9 @@
           <button class="profile__add-button" type="button" aria-label="Add_profile"></button>
         </section>
 
-        <section class="elements block-width">
-          <template class="template">
-            <div class="element">
-              <div class="element__image-block">
-                <img src="" class="element__image" alt="">
-              </div>
-              <button class="element__trash" aria-label="remove"></button>
-              <div class="element__name">
-                <p class="element__text"></p>
-                <button class="element__group" type="button" aria-label="like"></button>
-              </div>
-            </div>
-          </template>  
+        <section class="elements block-width">          
         </section>        
-      </main>
+      </main>     
             
       <footer class="footer block-width">
         <h3 class="footer__text">© 2020 Mesto Russia</h3>
@@ -52,11 +40,11 @@
         <div class="modal__frame" >
           <h3 class="modal__heading">Новое место</h3>
           <label class="modal__label">
-            <input class="modal__field modal__field_newform-name" id="input-newform-name" value="" name="newform-name"  placeholder="Название" minlength="1" maxlength="30" type="text" required>
+            <input class="modal__field modal__field_newform-name" id="input-newform-name" value="" name="name"  placeholder="Название" minlength="1" maxlength="30" type="text" required>
             <span class="modal__input-error" id="input-newform-name-error"></span>
           </label>
           <label class="modal__label">
-            <input class="modal__field modal__field_newform-link" id="input-newform-url" value="" name="newform-link" placeholder="Ссылка на картинку" type="url" required>
+            <input class="modal__field modal__field_newform-link" id="input-newform-url" value="" name="link" placeholder="Ссылка на картинку" type="url" required>
             <span class="modal__input-error" id="input-newform-url-error"></span>
           </label>
           <button class="modal__submit-button" type="submit" aria-label="save">Сохранить</button>
@@ -71,11 +59,11 @@
         <div class="modal__frame" >
           <h3 class="modal__heading">Редактировать профиль</h3>
           <label class="modal__label">
-            <input class="modal__field modal__field_editor-name" id="input-editor-name" value="Жак-Ив Кусто" name="editor-name" type="text" placeholder="Введите ваше имя" minlength="2" maxlength="40" required>
+            <input class="modal__field modal__field_editor-name" id="input-editor-name" value="Жак-Ив Зусто" name="name" type="text" placeholder="Введите ваше имя" minlength="2" maxlength="40" required>
             <span class="modal__input-error" id="input-editor-name-error"></span>
           </label>
           <label class="modal__label">
-            <input class="modal__field modal__field_editor-status" id="input-editor-status" value="Исследователь океана" name="editor-status" type="text" placeholder="Введите вашу профессию" minlength="2" maxlength="200" required>
+            <input class="modal__field modal__field_editor-status" id="input-editor-status" value="Исследователь океана" name="about" type="text" placeholder="Введите вашу профессию" minlength="2" maxlength="200" required>
             <span class="modal__input-error" id="input-editor-status-error"></span>
           </label>
           <button class="modal__submit-button" type="submit" aria-label="save">Сохранить</button>
@@ -87,14 +75,32 @@
       <div class="modal__overlay modal__overlay_render"></div>          
       <div class="modal__form modal__form_render">
         <button class="modal__button-close" type="button" aria-label="close"></button>
-        <img src="" class="modal__render" alt=""> 
+        <img class="modal__render" alt=""> 
         <h2 class="modal__render-text"></h2>      
       </div>        
     </div>
 
-    <script src="script/script.js" type="module"></script>
+    <template class="template">
+      <div class="element">
+        <div class="element__image-block">
+          <img class="element__image" alt="">
+        </div>
+        <button class="element__trash" aria-label="remove"></button>
+        <div class="element__name">
+          <p class="element__text"></p>
+          <button class="element__group" type="button" aria-label="like"></button>
+        </div>
+      </div>
+    </template>  
+
+    <!-- <script src="script/script.js" type="module"></script>
     <script src="script/card.js" type="module"></script>
     <script src="script/validate.js" type="module"></script>
+    <script src="script/popup.js" type="module"></script>
+    <script src="script/PopupWithImage.js" type="module"></script>
+    <script src="script/UserInfo.js" type="module"></script>
+    <script src="script/section.js" type="module"></script>
+    <script src="script/constants.js" type="module"></script> -->
 </body>
 </html>
 
