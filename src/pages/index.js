@@ -1,11 +1,12 @@
-import './pages/index.css';
+import './index.css';
 
-import Card from './card.js';
-import FormValidator from './validate.js';
-import Section from './section.js';
-import PopupWithForm from './PopupWithForm.js';
-import {UserInfo} from './UserInfo.js';
-import {initialCards} from './constants.js';
+import Card from '../components/card.js';
+import FormValidator from '../components/validate.js';
+import Section from '../components/section.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import {UserInfo} from '../components/UserInfo.js';
+import {initialCards} from '../components/constants.js';
+import PopupWithImage from '../components/PopupWithImage.js';
 
 //------------------------------------------------Переменные-----------------------------------------------------------//
 const editButton = document.querySelector('.profile__edit-button');
@@ -21,7 +22,11 @@ export const profileStatus = document.querySelector('.profile__status');
 
 const cardSection = new Section({items: initialCards, 
     renderer: (item) => {
-        const card = new Card(item.name, item.link);
+        const card = new Card(item.name, item.link, '.template', (src, alt) => {
+            const popupImage = new PopupWithImage('.modal_render');
+            popupImage.open(src, alt);
+            popupImage.setEventListeners();
+        });
         const cardElement = card.generateCard();
     
         return cardElement;

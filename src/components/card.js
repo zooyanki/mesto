@@ -2,14 +2,15 @@ import PopupWithImage from './PopupWithImage.js'
  
 /////////------------------Карточки---------------------------//////////////// 
 export default class Card { 
-    constructor(name, link, template) { 
+    constructor(name, link, template, handleCardClick) { 
         this._name = name; 
         this._link = link; 
-        this._template = template; 
+        this._template = template;
+        this.handleCardClick = handleCardClick; 
     }
      
     _getTemplate() { 
-    const cardElement = document.querySelector('.template').content.querySelector('.element').cloneNode(true); 
+    const cardElement = document.querySelector(this._template).content.querySelector('.element').cloneNode(true); 
  
     return cardElement; 
     } 
@@ -29,11 +30,14 @@ export default class Card {
         return this._element; 
     } 
 //Открытие модульного окна увеличенной карточки 
-    handleCardClick(src, alt) { 
-        const popupImage = new PopupWithImage('.modal_render');
-        popupImage.open(src, alt);
-        popupImage.setEventListeners();
-    } 
+        
+    _handleLikeIcon() {
+        this._element.querySelector('.element__group').classList.toggle('element__group_black');
+    }
+
+    _handleTrashIcon() {
+        this._element.remove();
+    }
 //Слушатели событий 
         //Открытие попапа 
     _setEventListeners() { 
@@ -41,12 +45,12 @@ export default class Card {
         this.handleCardClick(this._link, this._name); 
         }); 
         //Лайк: Да или Нет 
-        this._element.querySelector('.element__group').addEventListener('click', (evt) => { 
-            evt.target.classList.toggle('element__group_black'); 
+        this._element.querySelector('.element__group').addEventListener('click', () => { 
+            this._handleLikeIcon(); 
             }); 
         //Удаление карточки 
         this._element.querySelector('.element__trash').addEventListener('click', () => { 
-            this._element.remove(); 
+            this._handleTrashIcon(); 
             }); 
         } 
  
