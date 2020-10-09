@@ -1,5 +1,3 @@
-import PopupWithImage from './PopupWithImage.js'
- 
 /////////------------------Карточки---------------------------//////////////// 
 export default class Card { 
     constructor(name, link, template, handleCardClick) { 

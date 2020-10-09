@@ -20,10 +20,10 @@ export const renderText = document.querySelector('.modal__render-text');
 export const profileName = document.querySelector('.profile__name');
 export const profileStatus = document.querySelector('.profile__status');
 
+const popupImage = new PopupWithImage('.modal_render');
 const cardSection = new Section({items: initialCards, 
     renderer: (item) => {
-        const card = new Card(item.name, item.link, '.template', (src, alt) => {
-            const popupImage = new PopupWithImage('.modal_render');
+        const card = new Card(item.name, item.link, '.template', (src, alt) => {            
             popupImage.open(src, alt);
             popupImage.setEventListeners();
         });
