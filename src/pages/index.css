@@ -17,3 +17,4 @@
 @import url(../blocks/modal/__field/_error/modal__field_error.css);
 @import url(../blocks/modal/__input-error/_active/modal__input-error_active.css);
 @import url(../blocks/modal/__submit-button/_invalid/modal__submit-button_invalid.css);
+@import url(../blocks/modal/__heading/_confirmpopup/modal__heading_confirmpopup.css);

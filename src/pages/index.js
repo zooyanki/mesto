@@ -1,16 +1,20 @@
 import './index.css';
 
+
+import {api} from '../components/api.js';
 import Card from '../components/card.js';
 import FormValidator from '../components/validate.js';
 import Section from '../components/section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
-import {initialCards} from '../components/constants.js';
 import PopupWithImage from '../components/PopupWithImage.js';
+import Popup from '../components/popup';
 
 //------------------------------------------------Переменные-----------------------------------------------------------//
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
+const trashButton = document.querySelector('.element__trash');
+const avatarButton = document.querySelector('profile__overlay');
 
 //Переменные "Модального окна - увеличенный рендер"
 export const render = document.querySelector('.modal_render');
@@ -20,32 +24,50 @@ export const renderText = document.querySelector('.modal__render-text');
 export const profileName = document.querySelector('.profile__name');
 export const profileStatus = document.querySelector('.profile__status');
 
+
+//---------------------------------------------------Загрузка карточек на страницу-------------------------------------//
 const popupImage = new PopupWithImage('.modal_render');
-const cardSection = new Section({items: initialCards, 
-    renderer: (item) => {
-        const card = new Card(item.name, item.link, '.template', (src, alt) => {            
-            popupImage.open(src, alt);
-            popupImage.setEventListeners();
-        });
-        const cardElement = card.generateCard();
+const cardsPromise = api.getInitialCards();
+cardsPromise.then((x) => {
+    const cardSection = new Section({items: x, 
+        renderer: (item) => {
+            const card = new Card(item.name, item.link, '.template', (src, alt) => {            
+                popupImage.open(src, alt);
+                popupImage.setEventListeners();
+            });
+            const cardElement = card.generateCard();
+        
+            return cardElement;        
+        }}, '.elements');
     
-        return cardElement;
+    cardSection.render();
     
-    }}, '.elements');
+    const newForm = new PopupWithForm({popupSelector: '.modal_newform', handleFormSubmit: (item) => cardSection.addItem(item) });
+    newForm.setEventListeners();
+    addButton.addEventListener('click', () => newForm.open());
 
-cardSection.render();
+    const popupTrash = new Popup('.modal_confirmpopup');
+    popupTrash.setEventListeners();
+    trashButton.addEventListener('click', () => popupTrash.open());
 
-const newForm = new PopupWithForm({popupSelector: '.modal_newform', handleFormSubmit: (item) => cardSection.addItem(item) });
-newForm.setEventListeners();
-addButton.addEventListener('click', () => newForm.open())
+})
 
-
-const profileEditor = new UserInfo('.profile__name', '.profile__status');
-
-const editor = new PopupWithForm({popupSelector: '.modal_editor', handleFormSubmit: (info) => {
-    profileEditor.setUserInfo(info)}});
-editor.setEventListeners();
-editButton.addEventListener('click', () => editor.open(profileEditor.getUserInfo()))
+//----------------------------------------------------Редактирование профиля---------------------------------------------//
+const infoPromise = api.getUserInfo();
+infoPromise.then((x) =>{
+    const profileEditor = new UserInfo('.profile__name', '.profile__status','.profile__avatar');
+    profileEditor.setUserInfo(x);
+    const editor = new PopupWithForm({popupSelector: '.modal_editor', handleFormSubmit: (info) => {
+        profileEditor.setUserInfo(info)}});
+    editor.setEventListeners();
+    editButton.addEventListener('click', () => editor.open(profileEditor.getUserInfo()));
+    
+    const avatarEditor = new PopupWithForm({popupSelector: '.modal_updateavatar', handleFormSubmit: (info) => {
+        profileEditor.setUserInfo(info)}})
+    avatarEditor.setEventListeners;
+    trashButton.addEventListener('click', () => avatarEditor.open(profileEditor.getUserInfo()));
+})
+//-----------------------------------------------------Удаление карточки--------------------------------------------------//
 
 
 

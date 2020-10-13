@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <link rel="stylesheet" href="pages/index.css"> -->
   <title>MESTO - Russia</title>
 </head>
 
@@ -15,7 +14,13 @@
       
       <main>      
         <section class="profile block-width">
-          <img src="images/image.jpg" class="profile__avatar" alt="Аватар_пользователя">
+          <div class="profile__avatar-container">
+            <img src="images/mech.jpg" class="profile__avatar" alt="Аватар_пользователя">
+            <div class="profile__overlay">
+              <div class="profile__overlay-background"></div>
+              <img src="images/update_avatar.svg" class="profile__updateavatar">
+            </div>
+          </div>
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button" aria-label="Edit_profile"></button>
@@ -47,7 +52,7 @@
             <input class="modal__field modal__field_newform-link" id="input-newform-url" value="" name="link" placeholder="Ссылка на картинку" type="url" required>
             <span class="modal__input-error" id="input-newform-url-error"></span>
           </label>
-          <button class="modal__submit-button" type="submit" aria-label="save">Сохранить</button>
+          <button class="modal__submit-button" type="submit" aria-label="save">Создать</button>
         </div>        
       </form>  
     </div>
@@ -80,27 +85,47 @@
       </div>        
     </div>
 
+    <div class="modal modal_confirmpopup">
+      <div class="modal__overlay"></div>
+      <form class="modal__form modal__form_confirmpopup modal__form_validator" name="modal-confirmpopup" action="#">
+        <button class="modal__button-close" type="button" aria-label="close"></button>
+        <div class="modal__frame">
+          <h3 class="modal__heading modal__heading_confirmpopup">Вы уверены?</h3>
+          <button class="modal__submit-button" type="submit" aria-label="save">Да</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal modal_updateavatar">
+      <div class="modal__overlay"></div>
+      <form class="modal__form modal__form_confirmpopup modal__form_validator" name="modal-confirmpopup" action="#">
+        <button class="modal__button-close" type="button" aria-label="close"></button>
+        <div class="modal__frame">
+          <h3 class="modal__heading modal__heading_confirmpopup">Обновите аватар</h3>
+          <label class="modal__label">
+            <input class="modal__field modal__field_updateavatar" id="input-updateavatar-url" value="" name="link" placeholder="Ссылка на картинку" type="url" required>
+            <span class="modal__input-error" id="input-updateavatar-url-error"></span>
+          </label>
+          <button class="modal__submit-button" type="submit" aria-label="save">Сохранить</button>
+        </div>
+      </form>
+    </div>
+
     <template class="template">
       <div class="element">
         <div class="element__image-block">
           <img class="element__image" alt="">
         </div>
-        <button class="element__trash" aria-label="remove"></button>
+        <button class="element__trash" aria-label="remove" type="button"></button>
         <div class="element__name">
           <p class="element__text"></p>
-          <button class="element__group" type="button" aria-label="like"></button>
+          <div class="element__group-container">
+            <button class="element__group" type="button" aria-label="like"></button>
+            <p class="element__group-number"></p>
+          </div>
         </div>
       </div>
     </template>  
-
-    <!-- <script src="script/script.js" type="module"></script>
-    <script src="script/card.js" type="module"></script>
-    <script src="script/validate.js" type="module"></script>
-    <script src="script/popup.js" type="module"></script>
-    <script src="script/PopupWithImage.js" type="module"></script>
-    <script src="script/UserInfo.js" type="module"></script>
-    <script src="script/section.js" type="module"></script>
-    <script src="script/constants.js" type="module"></script> -->
 </body>
 </html>
 

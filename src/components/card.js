@@ -27,17 +27,15 @@ export default class Card {
         this._setEventListeners(); 
         return this._element; 
     } 
-//Открытие модульного окна увеличенной карточки 
         
     _handleLikeIcon() {
         this._element.querySelector('.element__group').classList.toggle('element__group_black');
     }
 
     _handleTrashIcon() {
-        this._element.remove();
+        // this._element.remove();
     }
-//Слушатели событий 
-        //Открытие попапа 
+ 
     _setEventListeners() { 
         this._element.querySelector('.element__image').addEventListener('click', () => { 
         this.handleCardClick(this._link, this._name); 
@@ -47,9 +45,9 @@ export default class Card {
             this._handleLikeIcon(); 
             }); 
         //Удаление карточки 
-        this._element.querySelector('.element__trash').addEventListener('click', () => { 
-            this._handleTrashIcon(); 
-            }); 
+        // this._element.querySelector('.element__trash').addEventListener('click', () => { 
+        //     this._handleTrashIcon(); 
+        //     }); 
         } 
  
 } 
