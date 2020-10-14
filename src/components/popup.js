@@ -22,7 +22,7 @@ export default class Popup {
     }
 
     setEventListeners() {
-        const closeBtn = this.popup.querySelector(".modal__button-close");
+        const closeBtn = this.popup.querySelector('.modal__button-close');
         closeBtn.addEventListener('click', () => this.close());
 
         const closeOverlay = this.popup.querySelector('.modal__overlay');

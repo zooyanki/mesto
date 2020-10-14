@@ -11,7 +11,6 @@ export default class PopupWithForm extends Popup {
     close() {
         super.close();        
         this._popupForm.reset();
-        this._popupForm.querySelector('.modal__submit-button').classList.add('modal__submit-button_invalid');
     }
 
     open(obj) {

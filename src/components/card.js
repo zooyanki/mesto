@@ -1,4 +1,7 @@
-/////////------------------Карточки---------------------------//////////////// 
+/////////------------------Карточки---------------------------////////////////
+import PopupWithForm from './PopupWithForm.js';
+import { api } from './api.js';
+
 export default class Card { 
     constructor(name, link, template, handleCardClick) { 
         this._name = name; 
@@ -32,8 +35,14 @@ export default class Card {
         this._element.querySelector('.element__group').classList.toggle('element__group_black');
     }
 
-    _handleTrashIcon() {
-        // this._element.remove();
+    handleTrashIcon() {
+        const trashPopup = new PopupWithForm({popupSelector: '.modal_confirmpopup', handleFormSubmit: () => {
+            console.log(this._element._id);  
+            this._element.remove();
+            
+        }});
+        trashPopup.setEventListeners();
+        trashPopup.open();
     }
  
     _setEventListeners() { 
@@ -45,9 +54,10 @@ export default class Card {
             this._handleLikeIcon(); 
             }); 
         //Удаление карточки 
-        // this._element.querySelector('.element__trash').addEventListener('click', () => { 
-        //     this._handleTrashIcon(); 
-        //     }); 
+        this._element.querySelector('.element__trash').addEventListener('click', () => {
+
+            this.handleTrashIcon(); 
+        }); 
         } 
  
 } 

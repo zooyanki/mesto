@@ -12,6 +12,47 @@ class Api {
       return fetch(this.baseUrl+`/users/me`,{headers: this.headers}).then((x) => x.json());
     }
 
+    setUserInfo(name, about) {
+      return fetch(this.baseUrl+`/users/me`, {
+        headers: this.headers,
+        method: `PATCH`,
+        body: JSON.stringify({
+          name: name,
+          about: about,
+        })
+      });
+    }
+
+    setUserAvatar(avatar) {
+      return fetch(this.baseUrl+`/users/me/avatar`, {
+        headers: this.headers,
+        method: `PATCH`,
+        body: JSON.stringify({
+          avatar: avatar
+        })
+      });
+    }
+
+    setInitialCard(name, link) {
+      return fetch(this.baseUrl+`/cards`, {
+        headers: this.headers,
+        method: `POST`,
+        body: JSON.stringify({
+          name: name,
+          link: link
+        })
+      });
+    }
+
+    delInitialCards(z) {
+      return fetch(this.baseUrl+`cards/cardId`, {
+        headers: this.headers,
+        method: `DELETE`,
+        //   body: JSON.stringify({
+        //    _id: z._id
+        // })
+      })
+    };
 }
   
 export const api = new Api({

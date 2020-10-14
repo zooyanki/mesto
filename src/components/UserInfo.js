@@ -13,9 +13,9 @@ export class UserInfo {
         }
     }
 
-    setUserInfo(info) {
-        this._nameSelector.textContent = info.name;
-        this._aboutSelector.textContent = info.about;
-        this._avatarSelector.src = info.avatar;
+    setUserInfo({name=this.getUserInfo().name, about=this.getUserInfo().about, avatar=this.getUserInfo().avatar}) {
+        this._nameSelector.textContent = name;
+        this._aboutSelector.textContent = about;
+        this._avatarSelector.src = avatar;
     }
 }

@@ -13,8 +13,7 @@ import Popup from '../components/popup';
 //------------------------------------------------Переменные-----------------------------------------------------------//
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
-const trashButton = document.querySelector('.element__trash');
-const avatarButton = document.querySelector('profile__overlay');
+const avatarButton = document.querySelector('.profile__overlay');
 
 //Переменные "Модального окна - увеличенный рендер"
 export const render = document.querySelector('.modal_render');
@@ -42,14 +41,11 @@ cardsPromise.then((x) => {
     
     cardSection.render();
     
-    const newForm = new PopupWithForm({popupSelector: '.modal_newform', handleFormSubmit: (item) => cardSection.addItem(item) });
+    const newForm = new PopupWithForm({popupSelector: '.modal_newform', handleFormSubmit: (item) => {
+        api.setInitialCard(item.name, item.link);
+        cardSection.addItem(item)}});
     newForm.setEventListeners();
     addButton.addEventListener('click', () => newForm.open());
-
-    const popupTrash = new Popup('.modal_confirmpopup');
-    popupTrash.setEventListeners();
-    trashButton.addEventListener('click', () => popupTrash.open());
-
 })
 
 //----------------------------------------------------Редактирование профиля---------------------------------------------//
@@ -57,17 +53,23 @@ const infoPromise = api.getUserInfo();
 infoPromise.then((x) =>{
     const profileEditor = new UserInfo('.profile__name', '.profile__status','.profile__avatar');
     profileEditor.setUserInfo(x);
-    const editor = new PopupWithForm({popupSelector: '.modal_editor', handleFormSubmit: (info) => {
-        profileEditor.setUserInfo(info)}});
+
+    const editor = new PopupWithForm({popupSelector: '.modal_editor', handleFormSubmit: (obj) => {
+        profileEditor.setUserInfo(obj);
+        api.setUserInfo(obj.name, obj.about);
+    }});
+
     editor.setEventListeners();
     editButton.addEventListener('click', () => editor.open(profileEditor.getUserInfo()));
     
-    const avatarEditor = new PopupWithForm({popupSelector: '.modal_updateavatar', handleFormSubmit: (info) => {
-        profileEditor.setUserInfo(info)}})
-    avatarEditor.setEventListeners;
-    trashButton.addEventListener('click', () => avatarEditor.open(profileEditor.getUserInfo()));
+    const avatarEditor = new PopupWithForm({popupSelector: '.modal_updateavatar', handleFormSubmit: (obj) => {
+        profileEditor.setUserInfo(obj);
+        api.setUserAvatar(obj.avatar);
+    }})
+    avatarEditor.setEventListeners();
+    avatarButton.addEventListener('click', () => avatarEditor.open());
 })
-//-----------------------------------------------------Удаление карточки--------------------------------------------------//
+//-------------------------------------------------------Удаление карточки--------------------------------------------------//
 
 
 
