@@ -8,7 +8,6 @@ import Section from '../components/section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
 import PopupWithImage from '../components/PopupWithImage.js';
-import Popup from '../components/popup';
 
 //------------------------------------------------Переменные-----------------------------------------------------------//
 const editButton = document.querySelector('.profile__edit-button');
@@ -30,13 +29,15 @@ const cardsPromise = api.getInitialCards();
 cardsPromise.then((x) => {
     const cardSection = new Section({items: x, 
         renderer: (item) => {
-            const card = new Card(item.name, item.link, '.template', (src, alt) => {            
+            
+            const card = new Card(item.name, item.link, item._id, item.likes,'.template', (src, alt) => {            
                 popupImage.open(src, alt);
                 popupImage.setEventListeners();
             });
             const cardElement = card.generateCard();
-        
-            return cardElement;        
+            
+            return cardElement;
+                  
         }}, '.elements');
     
     cardSection.render();

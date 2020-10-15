@@ -44,13 +44,33 @@ class Api {
       });
     }
 
-    delInitialCards(z) {
-      return fetch(this.baseUrl+`cards/cardId`, {
+    delInitialCards(del) {
+      return fetch(this.baseUrl+`/cards/${del}`, {
         headers: this.headers,
         method: `DELETE`,
-        //   body: JSON.stringify({
-        //    _id: z._id
-        // })
+        body: JSON.stringify({
+          _id: del 
+        })
+      })
+    };
+
+    addLikeCard(addlike) {
+      return fetch(this.baseUrl+`/cards/likes/${addlike}`, {
+        headers: this.headers,
+        method: `PUT`,
+        body: JSON.stringify({
+          _id: addlike 
+        })
+      })
+    };
+
+    remLikeCard(remlike) {
+      return fetch(this.baseUrl+`/cards/likes/${remlike}`, {
+        headers: this.headers,
+        method: `DELETE`,
+        body: JSON.stringify({
+          _id: remlike 
+        })
       })
     };
 }

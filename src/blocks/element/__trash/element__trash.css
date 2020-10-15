@@ -10,6 +10,7 @@
     border: 0;
     cursor: pointer;
     outline-width: 0;
+    visibility: hidden;
 }
 
 .element__trash:hover {
