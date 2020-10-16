@@ -30,7 +30,7 @@ class Api {
         body: JSON.stringify({
           avatar: avatar
         })
-      });
+      })
     }
 
     setInitialCard(name, link) {
@@ -41,7 +41,7 @@ class Api {
           name: name,
           link: link
         })
-      });
+      }).then((x) => x.json());
     }
 
     delInitialCards(del) {

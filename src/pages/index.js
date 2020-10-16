@@ -24,36 +24,10 @@ export const profileStatus = document.querySelector('.profile__status');
 
 
 //---------------------------------------------------Загрузка карточек на страницу-------------------------------------//
-const popupImage = new PopupWithImage('.modal_render');
-const cardsPromise = api.getInitialCards();
-cardsPromise.then((x) => {
-    const cardSection = new Section({items: x, 
-        renderer: (item) => {
-            
-            const card = new Card(item.name, item.link, item._id, item.likes,'.template', (src, alt) => {            
-                popupImage.open(src, alt);
-                popupImage.setEventListeners();
-            });
-            const cardElement = card.generateCard();
-            
-            return cardElement;
-                  
-        }}, '.elements');
-    
-    cardSection.render();
-    
-    const newForm = new PopupWithForm({popupSelector: '.modal_newform', handleFormSubmit: (item) => {
-        api.setInitialCard(item.name, item.link);
-        cardSection.addItem(item)}});
-    newForm.setEventListeners();
-    addButton.addEventListener('click', () => newForm.open());
-})
-
-//----------------------------------------------------Редактирование профиля---------------------------------------------//
 const infoPromise = api.getUserInfo();
-infoPromise.then((x) =>{
+infoPromise.then((userAPI) =>{
     const profileEditor = new UserInfo('.profile__name', '.profile__status','.profile__avatar');
-    profileEditor.setUserInfo(x);
+    profileEditor.setUserInfo(userAPI);
 
     const editor = new PopupWithForm({popupSelector: '.modal_editor', handleFormSubmit: (obj) => {
         profileEditor.setUserInfo(obj);
@@ -69,6 +43,42 @@ infoPromise.then((x) =>{
     }})
     avatarEditor.setEventListeners();
     avatarButton.addEventListener('click', () => avatarEditor.open());
+
+    console.log(userAPI._id);
+//---------------------------------------------------------------
+    const popupImage = new PopupWithImage('.modal_render');
+    const cardsPromise = api.getInitialCards();
+    cardsPromise.then((obj) => {
+        const cardSection = new Section({items: obj, 
+            renderer: (item) => {
+                
+                const card = new Card(item.name, item.link, item._id, item.likes, item.owner,'.template', (src, alt) => {            
+                    popupImage.open(src, alt);
+                    popupImage.setEventListeners();
+                });
+                const cardElement = card.generateCard(userAPI._id);
+                
+                return cardElement;
+                    
+            }}, '.elements');
+        
+        cardSection.render();
+        
+        const newForm = new PopupWithForm({
+            popupSelector: '.modal_newform', 
+            handleFormSubmit: (item) => {
+                api.setInitialCard(item.name, item.link).then((obj) => {
+                    item.likes = [];
+                    item.owner = {};
+                    cardSection.addItem(item)
+                });
+            }
+        });
+
+        newForm.setEventListeners();
+        addButton.addEventListener('click', () => newForm.open());
+    })
+
 })
 //-------------------------------------------------------Удаление карточки--------------------------------------------------//
 

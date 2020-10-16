@@ -3,43 +3,55 @@ import PopupWithForm from './PopupWithForm.js';
 import { api } from './api.js';
 
 export default class Card { 
-    constructor(name, link, id, likes, template, handleCardClick) { 
+    constructor(name, link, id, likes, owner, template, handleCardClick) { 
         this._name = name; 
         this._link = link;
         this._id = id;
         this._likes = likes; 
         this._template = template;
-        this.handleCardClick = handleCardClick; 
+        this._owner = owner;
+        this.handleCardClick = handleCardClick;        
     }
      
     _getTemplate() { 
-    const cardElement = document.querySelector(this._template).content.querySelector('.element').cloneNode(true); 
+        const cardElement = document.querySelector(this._template).content.querySelector('.element').cloneNode(true); 
  
-    return cardElement; 
+        return cardElement; 
     } 
  
 //Создание карточек 
-    generateCard() {       
+    generateCard(userId) {       
         this._element = this._getTemplate(); 
  
         const elementImage = this._element.querySelector('.element__image'); 
         const elementText = this._element.querySelector('.element__text');
-        const elementTrash = this._element.querySelector('.element__trash_visible');
-        
+        const likeNumber = this._element.querySelector('.element__group-number');
  
         elementImage.src = this._link; 
         elementImage.alt = this._name; 
-        elementText.textContent = this._name;
-         
+        elementText.textContent = this._name;        
+        likeNumber.textContent = this._likes.length;
+
         this._setEventListeners();
-        this.likeCount();
         
-        return this._element; 
-    } 
+        //Появление "Мусорки"
+        if (userId === this._owner._id) {
+             this._element.querySelector('.element__trash').classList.remove('element__trash_invisible');
+        }
+        //Заморозка сердца
+        this._likes.forEach(element => {
+            if (userId === element._id) {
+                this._element.querySelector('.element__group').classList.add('element__group_black');
+            }
+        })
+
+        return this._element;         
+    }
         
-    _handleLikeIcon() {        
+    _handleLikeIcon() {    
+        const likeNumber = this._element.querySelector('.element__group-number');     
         this._element.querySelector('.element__group').classList.toggle('element__group_black');
-        this.likeCount();
+        this.likeCount(likeNumber);
     }
 
     handleTrashIcon() {
@@ -52,20 +64,19 @@ export default class Card {
         trashPopup.open();
     }
 
-    likeCount() {
-        const likeNumber = this._element.querySelector('.element__group-number');
+    likeCount(like) {        
         if (this._element.querySelector('.element__group_black')) {
-            likeNumber.textContent = this._likes.length + 1;
+            like.textContent = this._likes.length + 1;
             api.addLikeCard(this._id);
-        } else if (this._element.querySelector('.element__group')) {
-            likeNumber.textContent = this._likes.length - 1;
-            api.remLikeCard(this._id);
+        } else {
+            like.textContent = this._likes.length - 1;
+            api.remLikeCard(this._id);     
         }
     }
- 
+
     _setEventListeners() { 
         this._element.querySelector('.element__image').addEventListener('click', () => { 
-        this.handleCardClick(this._link, this._name); 
+            this.handleCardClick(this._link, this._name); 
         }); 
         //Лайк: Да или Нет 
         this._element.querySelector('.element__group').addEventListener('click', () => {
