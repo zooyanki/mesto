@@ -1,9 +1,7 @@
 import './index.css';
 
-
 import {api} from '../components/api.js';
 import Card from '../components/card.js';
-import FormValidator from '../components/validate.js';
 import Section from '../components/section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import {UserInfo} from '../components/UserInfo.js';
@@ -25,13 +23,13 @@ export const profileStatus = document.querySelector('.profile__status');
 
 //---------------------------------------------------Загрузка карточек на страницу-------------------------------------//
 const infoPromise = api.getUserInfo();
-infoPromise.then((userAPI) =>{
+infoPromise.then((userAPI) => {
     const profileEditor = new UserInfo('.profile__name', '.profile__status','.profile__avatar');
     profileEditor.setUserInfo(userAPI);
 
     const editor = new PopupWithForm({popupSelector: '.modal_editor', handleFormSubmit: (obj) => {
         profileEditor.setUserInfo(obj);
-        api.setUserInfo(obj.name, obj.about);
+        return api.setUserInfo(obj.name, obj.about);
     }});
 
     editor.setEventListeners();
@@ -39,7 +37,7 @@ infoPromise.then((userAPI) =>{
     
     const avatarEditor = new PopupWithForm({popupSelector: '.modal_updateavatar', handleFormSubmit: (obj) => {
         profileEditor.setUserInfo(obj);
-        api.setUserAvatar(obj.avatar);
+        return api.setUserAvatar(obj.avatar);
     }})
     avatarEditor.setEventListeners();
     avatarButton.addEventListener('click', () => avatarEditor.open());
@@ -67,10 +65,10 @@ infoPromise.then((userAPI) =>{
         const newForm = new PopupWithForm({
             popupSelector: '.modal_newform', 
             handleFormSubmit: (item) => {
-                api.setInitialCard(item.name, item.link).then((obj) => {
+                return api.setInitialCard(item.name, item.link).then((obj) => {
                     item.likes = [];
                     item.owner = {};
-                    cardSection.addItem(item)
+                    cardSection.addItem(obj)
                 });
             }
         });
@@ -80,29 +78,6 @@ infoPromise.then((userAPI) =>{
     })
 
 })
-//-------------------------------------------------------Удаление карточки--------------------------------------------------//
-
-
-
-//-------------------------------------------------------------Валидация-мать порядка---------------------------------------//
-  
-//Валидация форм - селекторы и классы.
-const objectValid = {
-    formSelector: ".modal__form_validator",
-    inputSelector: ".modal__field",
-    submitButtonSelector: ".modal__submit-button",
-    inactiveButton: "modal__submit-button_invalid",
-    inputError: "modal__field_error",
-    inputErrorActive: "modal__input-error_active"
-}
-
-const formList = Array.from(document.querySelectorAll(objectValid.formSelector));
-
-formList.forEach((formElement) => {
-    const validator = new FormValidator(objectValid, formElement);
-    validator.enableValidation();
-});
-
 
 
 

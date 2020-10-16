@@ -67,10 +67,14 @@ export default class Card {
     likeCount(like) {        
         if (this._element.querySelector('.element__group_black')) {
             like.textContent = this._likes.length + 1;
-            api.addLikeCard(this._id);
-        } else {
+            api.addLikeCard(this._id).then((x) => {
+                this._likes = x.likes;
+            });
+        } else{ 
             like.textContent = this._likes.length - 1;
-            api.remLikeCard(this._id);     
+            api.remLikeCard(this._id).then((x) => {
+                this._likes = x.likes;    
+            });
         }
     }
 

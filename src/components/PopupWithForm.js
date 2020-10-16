@@ -1,4 +1,15 @@
 import Popup from './popup.js';
+import FormValidator from './validate.js';
+
+const objectValid = {
+    formSelector: ".modal__form_validator",
+    inputSelector: ".modal__field",
+    submitButtonSelector: ".modal__submit-button",
+    inactiveButton: "modal__submit-button_invalid",
+    inputError: "modal__field_error",
+    inputErrorActive: "modal__input-error_active"
+}
+
 
 export default class PopupWithForm extends Popup {
     constructor({popupSelector, handleFormSubmit}) {
@@ -6,11 +17,14 @@ export default class PopupWithForm extends Popup {
         this._handleFormSubmit = handleFormSubmit;
         this._popupForm = this.popup.querySelector('form');
         this._inputList = this.popup.querySelectorAll('.modal__field');
+        this._submitText = this._popupForm.querySelector('.modal__submit-button').textContent;
+        this.validator = new FormValidator(objectValid, this._popupForm);    
     }
 
     close() {
         super.close();        
         this._popupForm.reset();
+
     }
 
     open(obj) {
@@ -21,6 +35,8 @@ export default class PopupWithForm extends Popup {
                 input.value = obj[input.name]; 
             }); 
         }
+
+        this.validator.enableValidation();
     }
 
     _getInputValues() {
@@ -37,8 +53,12 @@ export default class PopupWithForm extends Popup {
         
         this._popupForm.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this._handleFormSubmit(this._getInputValues())
-            this.close();
+            this._handleFormSubmit(this._getInputValues()).then((y) => {
+                this.close();
+                this._popupForm.querySelector('.modal__submit-button').textContent = this._submitText;
+                this._popupForm.querySelector('.')
+            })
+        this._popupForm.querySelector('.modal__submit-button').textContent = 'Сохранить...';
         });
     }
 }

@@ -61,7 +61,7 @@ class Api {
         body: JSON.stringify({
           _id: addlike 
         })
-      })
+      }).then((x) => x.json());
     };
 
     remLikeCard(remlike) {
@@ -71,7 +71,7 @@ class Api {
         body: JSON.stringify({
           _id: remlike 
         })
-      })
+      }).then((x) => x.json());
     };
 }
   
