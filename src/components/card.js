@@ -1,6 +1,9 @@
 /////////------------------Карточки---------------------------////////////////
-import PopupWithForm from './PopupWithForm.js';
+import PopupConfirm from './PopupConfirm.js';
 import { api } from './api.js';
+
+const confirmModal = new PopupConfirm({popupSelector: '.modal_confirmpopup'});
+confirmModal.setEventListeners();
 
 export default class Card { 
     constructor(name, link, id, likes, owner, template, handleCardClick) { 
@@ -55,13 +58,10 @@ export default class Card {
     }
 
     handleTrashIcon() {
-        const trashPopup = new PopupWithForm({popupSelector: '.modal_confirmpopup', handleFormSubmit: () => {
-            api.delInitialCards(this._id);
+        confirmModal.open(() => {
             this._element.remove();
-            
-        }});
-        trashPopup.setEventListeners();
-        trashPopup.open();
+            api.delInitialCards(this._id);            
+        });
     }
 
     likeCount(like) {        

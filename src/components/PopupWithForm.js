@@ -56,8 +56,7 @@ export default class PopupWithForm extends Popup {
             this._popupForm.querySelector('.modal__submit-button').textContent = 'Сохранить...';
             if (res) {res.then(() => {
                 this._popupForm.querySelector('.modal__submit-button').textContent = this._submitText;
-                this.close();
-            });} else {
+                this.close();});} else {
                 this._popupForm.querySelector('.modal__submit-button').textContent = this._submitText;
                 this.close();
             }     
