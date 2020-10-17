@@ -41,8 +41,6 @@ infoPromise.then((userAPI) => {
     }})
     avatarEditor.setEventListeners();
     avatarButton.addEventListener('click', () => avatarEditor.open());
-
-    console.log(userAPI._id);
 //---------------------------------------------------------------
     const popupImage = new PopupWithImage('.modal_render');
     const cardsPromise = api.getInitialCards();
