@@ -11,6 +11,8 @@
     align-self: center;
     border: 1px solid #FFFFFF;
     cursor: pointer;
+    grid-row: 1;
+    grid-column: 2;
 }
 
 .profile__edit-button:hover {
