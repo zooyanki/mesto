@@ -24,7 +24,6 @@ export default class PopupWithForm extends Popup {
     close() {
         super.close();        
         this._popupForm.reset();
-
     }
 
     open(obj) {
@@ -53,11 +52,9 @@ export default class PopupWithForm extends Popup {
         
         this._popupForm.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this._handleFormSubmit(this._getInputValues()).then((y) => {
-                this.close();
-                this._popupForm.querySelector('.modal__submit-button').textContent = this._submitText;
-            })
+            this._handleFormSubmit(this._getInputValues());
         this._popupForm.querySelector('.modal__submit-button').textContent = 'Сохранить...';
+        this.close();
         });
     }
 }
