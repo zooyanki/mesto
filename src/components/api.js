@@ -1,15 +1,21 @@
-class Api {
+export default class Api {
     constructor(options) {
       this.headers = options.headers;
       this.baseUrl = options.baseUrl;
     }
   
     getInitialCards() {
-      return fetch(this.baseUrl+`/cards`,{headers: this.headers}).then((x) => x.json());
+      return fetch(this.baseUrl+`/cards`,{headers: this.headers})
+      .then((x) => x.json())
+      .catch((err) =>
+        console.log("Упс... что-то пошло не так"));
     }
 
     getUserInfo() {
-      return fetch(this.baseUrl+`/users/me`,{headers: this.headers}).then((x) => x.json());
+      return fetch(this.baseUrl+`/users/me`,{headers: this.headers})
+      .then((x) => x.json())
+      .catch((err) =>
+        console.log("Упс... что-то пошло не так"));
     }
 
     setUserInfo(name, about) {
@@ -20,7 +26,9 @@ class Api {
           name: name,
           about: about,
         })
-      });
+      })
+      .catch((err) =>
+        console.log("Упс... что-то пошло не так"));
     }
 
     setUserAvatar(avatar) {
@@ -31,6 +39,8 @@ class Api {
           avatar: avatar
         })
       })
+      .catch((err) =>
+        console.log("Упс... что-то пошло не так"));
     }
 
     setInitialCard(name, link) {
@@ -41,7 +51,10 @@ class Api {
           name: name,
           link: link
         })
-      }).then((x) => x.json());
+      })
+      .then((x) => x.json())
+      .catch((err) =>
+        console.log("Упс... что-то пошло не так"));
     }
 
     delInitialCards(del) {
@@ -52,6 +65,8 @@ class Api {
           _id: del 
         })
       })
+      .catch((err) =>
+        console.log("Упс... что-то пошло не так"));
     };
 
     addLikeCard(addlike) {
@@ -61,7 +76,10 @@ class Api {
         body: JSON.stringify({
           _id: addlike 
         })
-      }).then((x) => x.json());
+      })
+      .then((x) => x.json())
+      .catch((err) =>
+        console.log("Упс... что-то пошло не так"));
     };
 
     remLikeCard(remlike) {
@@ -71,14 +89,10 @@ class Api {
         body: JSON.stringify({
           _id: remlike 
         })
-      }).then((x) => x.json());
+      })
+      .then((x) => x.json())
+      .catch((err) =>
+        console.log("Упс... что-то пошло не так"));
     };
 }
   
-export const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-16',
-    headers: {
-      authorization: '588c72f6-47fd-494a-9f61-2083e374b77d',
-      'Content-Type': 'application/json'
-    }
-}); 

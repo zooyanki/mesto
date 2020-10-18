@@ -17,4 +17,9 @@ export default class Section {
             this._container.append(element);
         });
     }
+
+    deleteItem(item) {
+        this._rendererItems = this._rendererItems.filter((e) => e!==item);
+       
+    }
 }

@@ -1,15 +1,14 @@
 /////////------------------Карточки---------------------------////////////////
 import PopupConfirm from './PopupConfirm.js';
-import { api } from './api.js';
 
 const confirmModal = new PopupConfirm({popupSelector: '.modal_confirmpopup'});
 confirmModal.setEventListeners();
 
 export default class Card { 
-    constructor(name, link, id, likes, owner, template, handleCardClick) { 
+    constructor(name, link, remotableCard, likes, owner, template, handleCardClick) { 
         this._name = name; 
         this._link = link;
-        this._id = id;
+        this._remotableCard = remotableCard;
         this._likes = likes; 
         this._template = template;
         this._owner = owner;
@@ -60,19 +59,20 @@ export default class Card {
     handleTrashIcon() {
         confirmModal.open(() => {
             this._element.remove();
-            api.delInitialCards(this._id);            
+            this._remotableCard.remove();
+                        
         });
     }
 
     likeCount(like) {        
         if (this._element.querySelector('.element__group_black')) {
             like.textContent = this._likes.length + 1;
-            api.addLikeCard(this._id).then((x) => {
+            this._remotableCard.like().then((x) => {
                 this._likes = x.likes;
             });
         } else{ 
             like.textContent = this._likes.length - 1;
-            api.remLikeCard(this._id).then((x) => {
+            this._remotableCard.dislike().then((x) => {
                 this._likes = x.likes;    
             });
         }
