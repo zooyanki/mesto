@@ -6,14 +6,25 @@ export default class Api {
   
     getInitialCards() {
       return fetch(this.baseUrl+`/cards`,{headers: this.headers})
-      .then((x) => x.json())
+
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Что-то пошло не так: ${res.status}`);
+      })
       .catch((err) =>
         console.log("Упс... что-то пошло не так"));
     }
 
     getUserInfo() {
       return fetch(this.baseUrl+`/users/me`,{headers: this.headers})
-      .then((x) => x.json())
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Что-то пошло не так: ${res.status}`);
+      })
       .catch((err) =>
         console.log("Упс... что-то пошло не так"));
     }
@@ -52,7 +63,12 @@ export default class Api {
           link: link
         })
       })
-      .then((x) => x.json())
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Что-то пошло не так: ${res.status}`);
+      })
       .catch((err) =>
         console.log("Упс... что-то пошло не так"));
     }
@@ -77,7 +93,12 @@ export default class Api {
           _id: addlike 
         })
       })
-      .then((x) => x.json())
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Что-то пошло не так: ${res.status}`);
+      })
       .catch((err) =>
         console.log("Упс... что-то пошло не так"));
     };
@@ -90,7 +111,12 @@ export default class Api {
           _id: remlike 
         })
       })
-      .then((x) => x.json())
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Что-то пошло не так: ${res.status}`);
+      })
       .catch((err) =>
         console.log("Упс... что-то пошло не так"));
     };
