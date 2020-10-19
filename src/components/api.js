@@ -11,7 +11,7 @@ export default class Api {
         if (res.ok) {
           return res.json();
         }
-        return Promise.reject(`Что-то пошло не так: ${res.status}`);
+        return Promise.reject(`Хьюстон, у нас проблемы: ${res.status}`);
       })
       .catch((err) =>
         console.log("Упс... что-то пошло не так"));
@@ -23,7 +23,7 @@ export default class Api {
         if (res.ok) {
           return res.json();
         }
-        return Promise.reject(`Что-то пошло не так: ${res.status}`);
+        return Promise.reject(`Хьюстон, у нас проблемы: ${res.status}`);
       })
       .catch((err) =>
         console.log("Упс... что-то пошло не так"));
@@ -67,7 +67,7 @@ export default class Api {
         if (res.ok) {
           return res.json();
         }
-        return Promise.reject(`Что-то пошло не так: ${res.status}`);
+        return Promise.reject(`Хьюстон, у нас проблемы: ${res.status}`);
       })
       .catch((err) =>
         console.log("Упс... что-то пошло не так"));
@@ -97,7 +97,7 @@ export default class Api {
         if (res.ok) {
           return res.json();
         }
-        return Promise.reject(`Что-то пошло не так: ${res.status}`);
+        return Promise.reject(`Хьюстон, у нас проблемы: ${res.status}`);
       })
       .catch((err) =>
         console.log("Упс... что-то пошло не так"));
@@ -115,7 +115,7 @@ export default class Api {
         if (res.ok) {
           return res.json();
         }
-        return Promise.reject(`Что-то пошло не так: ${res.status}`);
+        return Promise.reject(`Хьюстон, у нас проблемы: ${res.status}`);
       })
       .catch((err) =>
         console.log("Упс... что-то пошло не так"));
