@@ -66,14 +66,14 @@ export default class Card {
 
     likeCount(like) {        
         if (this._element.querySelector('.element__group_black')) {
-            like.textContent = this._likes.length + 1;
             this._remotableCard.like().then((x) => {
                 this._likes = x.likes;
+                like.textContent = this._likes.length;
             });
-        } else{ 
-            like.textContent = this._likes.length - 1;
+        } else{
             this._remotableCard.dislike().then((x) => {
-                this._likes = x.likes;    
+                this._likes = x.likes;
+                like.textContent = this._likes.length;    
             });
         }
     }
