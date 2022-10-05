@@ -9,6 +9,7 @@
 @import url(../blocks/element/element.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/modal/modal.css);
+@import url(../blocks/iframe/iframe.css);
 
 /*Модификаторы*/
 @import url(../blocks/element/__group/_black/element__group_black.css);
