@@ -13,13 +13,16 @@ export default class Iframe {
 
     this._iframe.contentWindow.postMessage(
       `${JSON.stringify(message)}`,
-      `http://localhost:8080/`
+      `https://urmdf-canary.ssl.mts.ru/widget/`
     );
+    console.log(JSON.stringify(message));
   }
 
   iframeOpen() {
     this._iframe.classList.add("iframe_open");
     this._iframe.src = "https://urmdf-canary.ssl.mts.ru/widget/";
-    this._loadIframe();
+    setTimeout(() => {
+      this._loadIframe();
+    }, 1000);
   }
 }
