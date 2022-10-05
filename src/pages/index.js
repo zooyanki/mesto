@@ -120,4 +120,12 @@ infoPromise.then((userAPI) => {
       iframe.iframeOpen();
     });
   });
+
+  const readMessage = (event) => {
+    if (event.data === false) {
+      iframe.iframeClose();
+    }
+  };
+
+  window.addEventListener("message", readMessage, false);
 });

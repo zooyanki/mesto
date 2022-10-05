@@ -13,7 +13,8 @@ export default class Iframe {
 
     this._iframe.contentWindow.postMessage(
       `${JSON.stringify(message)}`,
-      `https://urmdf-canary.ssl.mts.ru/widget/`
+      "https://urmdf-canary.ssl.mts.ru/widget/"
+      // "http://localhost:7000/"
     );
     console.log(JSON.stringify(message));
   }
@@ -21,8 +22,13 @@ export default class Iframe {
   iframeOpen() {
     this._iframe.classList.add("iframe_open");
     this._iframe.src = "https://urmdf-canary.ssl.mts.ru/widget/";
+    // this._iframe.src = "http://localhost:7000/";
     setTimeout(() => {
       this._loadIframe();
     }, 1000);
+  }
+
+  iframeClose() {
+    this._iframe.classList.remove("iframe_open");
   }
 }
