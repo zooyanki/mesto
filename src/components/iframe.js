@@ -16,7 +16,6 @@ export default class Iframe {
       "https://urmdf-canary.ssl.mts.ru/widget/"
       // "http://localhost:7000/"
     );
-    console.log(JSON.stringify(message));
   }
 
   iframeOpen() {
