@@ -22,7 +22,7 @@
 .element__image{position:relative;background-image:#fff;margin:0;width:282px;height:282px;-o-object-fit:cover;object-fit:cover;z-index:0;cursor:pointer}
 .element__name{display:flex;flex-direction:row;justify-content:space-between;padding:25px 15px 31px 21px}
 .element__text{margin:0;max-width:200px;font-weight:900;font-size:24px;line-height:1.21;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
-.element__trash{position:absolute;right:17px;top:24px;background-image:url(a274c87c0f6b553b47ad3aa5ed58a113.svg);background-color:transparent;width:18px;height:19.3px;z-index:100;border:0;cursor:pointer;outline-width:0;visibility:visible}.element__trash:hover{opacity:.6;transition:.5s}
+.element__trash{position:absolute;right:17px;top:24px;background-image:url(a274c87c0f6b553b47ad3aa5ed58a113.svg);background-color:transparent;width:18px;height:19.3px;z-index:0;border:0;cursor:pointer;outline-width:0;visibility:visible}.element__trash:hover{opacity:.6;transition:.5s}
 .element__image-block{position:relative;width:282px;height:282px;margin:0;background-color:#fff}
 .element__group-container{display:flex;flex-direction:column;align-items:center;width:20px;height:34px}
 .element__group-number{margin:0;padding:0;font-weight:400;font-size:13px;line-height:1.21}

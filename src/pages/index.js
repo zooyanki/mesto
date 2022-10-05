@@ -119,13 +119,13 @@ infoPromise.then((userAPI) => {
     widgetButton.addEventListener("click", () => {
       iframe.iframeOpen();
     });
+
+    const readMessage = (event) => {
+      if (event.data === false) {
+        iframe.iframeClose();
+      }
+    };
+
+    window.addEventListener("message", readMessage, false);
   });
-
-  const readMessage = (event) => {
-    if (event.data === false) {
-      iframe.iframeClose();
-    }
-  };
-
-  window.addEventListener("message", readMessage, false);
 });
