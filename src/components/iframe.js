@@ -13,7 +13,7 @@ export default class Iframe {
 
     this._iframe.contentWindow.postMessage(
       `${JSON.stringify(message)}`,
-      `https://urmdf-canary.ssl.mts.ru/widget/`
+      `http://localhost:8080/`
     );
   }
 

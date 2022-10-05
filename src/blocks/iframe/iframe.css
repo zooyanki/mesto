@@ -3,5 +3,11 @@
 }
 
 .iframe_open {
-  display: none;
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: none;
+  width: 100%;
+  height: 100vh;
 }
