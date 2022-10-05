@@ -1,0 +1,15 @@
+.profile__iframe {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 150px;
+  height: 50px;
+  margin: 35px 0;
+  border: 2px solid #ffffff;
+  fill: none;
+  border-radius: 2px;
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  background-color: red;
+}
