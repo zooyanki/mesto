@@ -33,6 +33,8 @@ const api = new Api({
 //---------------------------------------------------Загрузка карточек на страницу-------------------------------------//
 const infoPromise = api.getUserInfo();
 infoPromise.then((userAPI) => {
+  const iframe = new Iframe();
+
   const profileEditor = new UserInfo(
     ".profile__name",
     ".profile__status",
@@ -112,12 +114,18 @@ infoPromise.then((userAPI) => {
       },
     });
 
-    const iframe = new Iframe();
-
     newForm.setEventListeners();
     addButton.addEventListener("click", () => newForm.open());
     widgetButton.addEventListener("click", () => {
       iframe.iframeOpen();
     });
   });
+
+  const readMessage = (event) => {
+    if (event.data === false) {
+      iframe.iframeClose();
+    }
+  };
+
+  window.addEventListener("message", readMessage, false);
 });
